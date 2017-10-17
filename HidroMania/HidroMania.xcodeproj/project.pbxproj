@@ -15,6 +15,7 @@
 		E9ECA6A11F96A40F00E9BA93 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9ECA69F1F96A40F00E9BA93 /* Main.storyboard */; };
 		E9ECA6A31F96A40F00E9BA93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9ECA6A21F96A40F00E9BA93 /* Assets.xcassets */; };
 		E9ECA6A61F96A40F00E9BA93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9ECA6A41F96A40F00E9BA93 /* LaunchScreen.storyboard */; };
+		E9ECA6B31F96A97F00E9BA93 /* GameLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECA6B21F96A97F00E9BA93 /* GameLayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		E9ECA6A21F96A40F00E9BA93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9ECA6A51F96A40F00E9BA93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E9ECA6A71F96A40F00E9BA93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9ECA6B21F96A97F00E9BA93 /* GameLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameLayer.swift; path = ../GameLayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 		E9ECA6941F96A40E00E9BA93 /* HidroMania */ = {
 			isa = PBXGroup;
 			children = (
+				E9ECA6AD1F96A94A00E9BA93 /* layers */,
 				E9ECA6951F96A40E00E9BA93 /* AppDelegate.swift */,
 				E9ECA6971F96A40E00E9BA93 /* GameScene.sks */,
 				E9ECA6991F96A40E00E9BA93 /* Actions.sks */,
@@ -71,6 +74,46 @@
 				E9ECA6A71F96A40F00E9BA93 /* Info.plist */,
 			);
 			path = HidroMania;
+			sourceTree = "<group>";
+		};
+		E9ECA6AD1F96A94A00E9BA93 /* layers */ = {
+			isa = PBXGroup;
+			children = (
+				E9ECA6B21F96A97F00E9BA93 /* GameLayer.swift */,
+				E9ECA6AE1F96A94A00E9BA93 /* food bar */,
+				E9ECA6AF1F96A94A00E9BA93 /* hud */,
+				E9ECA6B01F96A94A00E9BA93 /* market */,
+				E9ECA6B11F96A94A00E9BA93 /* water path */,
+			);
+			path = layers;
+			sourceTree = "<group>";
+		};
+		E9ECA6AE1F96A94A00E9BA93 /* food bar */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "food bar";
+			sourceTree = "<group>";
+		};
+		E9ECA6AF1F96A94A00E9BA93 /* hud */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = hud;
+			sourceTree = "<group>";
+		};
+		E9ECA6B01F96A94A00E9BA93 /* market */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = market;
+			sourceTree = "<group>";
+		};
+		E9ECA6B11F96A94A00E9BA93 /* water path */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "water path";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,6 +192,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9ECA69C1F96A40F00E9BA93 /* GameScene.swift in Sources */,
+				E9ECA6B31F96A97F00E9BA93 /* GameLayer.swift in Sources */,
 				E9ECA69E1F96A40F00E9BA93 /* GameViewController.swift in Sources */,
 				E9ECA6961F96A40E00E9BA93 /* AppDelegate.swift in Sources */,
 			);
