@@ -23,6 +23,7 @@
 		E9ECA6BF1F96AE4F00E9BA93 /* MarketLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECA6BE1F96AE4F00E9BA93 /* MarketLayer.swift */; };
 		E9ECA6C11F96AE5900E9BA93 /* GameOverLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECA6C01F96AE5900E9BA93 /* GameOverLayer.swift */; };
 		E9ECA6C31F96AEB600E9BA93 /* MenuLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECA6C21F96AEB600E9BA93 /* MenuLayer.swift */; };
+		E9ECA6C51F96BCCE00E9BA93 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECA6C41F96BCCE00E9BA93 /* Ingredient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		E9ECA6BE1F96AE4F00E9BA93 /* MarketLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketLayer.swift; sourceTree = "<group>"; };
 		E9ECA6C01F96AE5900E9BA93 /* GameOverLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverLayer.swift; sourceTree = "<group>"; };
 		E9ECA6C21F96AEB600E9BA93 /* MenuLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuLayer.swift; sourceTree = "<group>"; };
+		E9ECA6C41F96BCCE00E9BA93 /* Ingredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				E9ECA6B81F96AE2500E9BA93 /* FoodBarLayer.swift */,
+				E9ECA6C41F96BCCE00E9BA93 /* Ingredient.swift */,
 			);
 			path = "food bar";
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 				E9ECA6BF1F96AE4F00E9BA93 /* MarketLayer.swift in Sources */,
 				E9ECA6C31F96AEB600E9BA93 /* MenuLayer.swift in Sources */,
 				E9ECA6BB1F96AE3800E9BA93 /* HudLayer.swift in Sources */,
+				E9ECA6C51F96BCCE00E9BA93 /* Ingredient.swift in Sources */,
 				E9ECA6B71F96ACCC00E9BA93 /* GameLayer.swift in Sources */,
 				E9ECA6C11F96AE5900E9BA93 /* GameOverLayer.swift in Sources */,
 				E9ECA6BD1F96AE4400E9BA93 /* WaterPathLayer.swift in Sources */,
