@@ -24,15 +24,13 @@ class GameScene: SKScene {
     }
     
     override func didMove(to view: SKView) {
-        
         self.backgroundColor = UIColor.black
         
-        let node = SKSpriteNode(color: UIColor.blue, size: CGSize(width: 20, height: 20))
+        //Creating first layer
+        let gameLayer = GameLayer(size: self.size)
         
-        node.position.x = self.size.width/2
-        node.position.y = self.size.height/2
-        
-        self.addChild(node)
+        self.addChild(gameLayer)
+        gameLayer.didMove()
         
     }
     

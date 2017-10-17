@@ -8,10 +8,23 @@
 
 import SpriteKit
 
-class GameLayer:SKSpriteNode {
+
+
+//Abstract Class
+class Layer:SKSpriteNode{
     
-    convenience init(size: CGSize){
-        self.init(color: UIColor.clear, size: size)
+    init(size: CGSize){
+        super.init(texture: nil, color: UIColor.clear, size: UIScreen.main.bounds.size)
+        self.anchorPoint = CGPoint(x: 0.0, y: 1.0)
+
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func didMove(){
+        
     }
     
     func update(delta:Double){
