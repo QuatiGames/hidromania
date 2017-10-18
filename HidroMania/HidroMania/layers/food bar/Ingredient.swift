@@ -11,14 +11,18 @@ import SpriteKit
 struct IngredientData{
     var name:String
     var type:String //mudar enum
-    var price:Int
+    private var price:Double
     var description:String
     
-    init(n:String, t:String, p:Int, d:String){
-        self.name = n
-        self.type = t
-        self.price = p
-        self.description = d
+    init(n:String, t:String, p:Double, d:String){
+        name = n
+        type = t
+        price = p
+        description = d
+    }
+    
+    func getPrice() -> Double{
+        return price * player.discount
     }
 }
 

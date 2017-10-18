@@ -32,6 +32,8 @@ class TableView<TCell:GenericCell>: UITableView,UITableViewDelegate,UITableViewD
     
     var count:( () -> (Int))?
     var obj:((Int) -> (AnyObject))?
+    var height:( () -> (CGFloat))?
+    var space:( () -> (CGFloat))?
     
     override init(frame: CGRect, style: UITableViewStyle) {
         super.init(frame: frame, style: style)
@@ -51,10 +53,6 @@ class TableView<TCell:GenericCell>: UITableView,UITableViewDelegate,UITableViewD
     
     // MARK: - Table view data source
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if let c = self.count {
             return c()
@@ -63,21 +61,44 @@ class TableView<TCell:GenericCell>: UITableView,UITableViewDelegate,UITableViewD
         return 0
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+//        if let c = self.count {
+//            return c()
+//        }
+        
+        return 1
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:TCell = tableView.dequeueReusableCell(withIdentifier: TCell.identifier)! as! TCell
         
         if let obj = obj{
-            cell.configure(data: obj(indexPath.row) )
+            cell.configure(data: obj(indexPath.section) )
         }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if let c = space {
+            return c()
+        }
+        
+        return 10
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return nil//"Section \(section)"
     }
     
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if let c = height {
+            return c()
+        }
+        
+        return 100
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("You selected cell #\(indexPath.row)!")

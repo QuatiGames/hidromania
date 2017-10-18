@@ -29,15 +29,14 @@ class Player {
     fileprivate var ingredients = Dictionary<String,Int>()
     fileprivate var observers = Array<PlayerObserver>()
     
+    var discount = 1.0
     
     
     init(){
-        for i in 1...5 {
-            ingredients["type\(i)"] = i*2
+        for ing in allIngredients {
+            ingredients[ing.type] = 10
         }
     }
-    
-    
     
     
     let allIngredients:Array<IngredientData> = [
@@ -51,7 +50,12 @@ class Player {
     let settings:Array<String> = ["Music", "Effects"]
     
     
-//    let allEnhancements = []
+    let allEnhancements:Array<Enhancement> = [
+        Enhancement(n: "Abertura para o sol",t: "enh1", d: "A Abertura para o sol é muito saudável para as plantas", p: 5000),
+        Enhancement(n: "Bomba mais forte",t: "enh2", d: "Aumento da velocidade da bomba em 20%", p: 7000),
+        Enhancement(n: "Descontos em nutrientes",t: "enh3", d: "Nutrientes são 20% mais baratos", p: 10000),
+        Enhancement(n: "Abertura para o sol",t: "enh4", d: "A Abertura para o sol é muito saudável para as plantas", p: 12000),
+                                              ]
     
 //    var enhancementsBought = []
     

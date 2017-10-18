@@ -107,11 +107,15 @@ extension MarketLayer {
         
         clearTable()
         
-        table = TableView<TableViewCellSettings>(frame: CGRect(x: midw - w/2, y: midh - h/2, width: w, height: h), style: .plain)
+        table = TableView<SettingsCell>(frame: CGRect(x: midw - w/2, y: midh - h/2, width: w, height: h), style: .plain)
+        table?.isScrollEnabled = false
+        table?.allowsSelection = false
         
-        if let table = table as? TableView<TableViewCellSettings>{
+        if let table = table as? TableView<SettingsCell>{
             table.count = { return player.settings.count }
             table.obj = { index in return player.settings[index] as AnyObject }
+            table.height = { return 60 }
+            table.space = { return 0 }
             
             self.scene?.view?.addSubview(table)
             table.reloadData()
@@ -124,6 +128,8 @@ extension MarketLayer {
         clearTable()
         
         table = TableView<TableViewFoodCell>(frame: CGRect(x: midw - w/2, y: midh - h/2, width: w, height: h), style: .plain)
+        table?.allowsSelection = false
+        
         
         if let table = table as? TableView<TableViewFoodCell>{
             table.count = { return player.allIngredients.count }
@@ -138,11 +144,12 @@ extension MarketLayer {
         
         clearTable()
         
-        table = TableView<TableViewEnhancementCell>(frame: CGRect(x: midw - w/2, y: midh - h/2, width: w, height: h), style: .plain)
+        table = TableView<TableViewFoodCell>(frame: CGRect(x: midw - w/2, y: midh - h/2, width: w, height: h), style: .plain)
+        table?.allowsSelection = false
         
-        if let table = table as? TableView<TableViewEnhancementCell>{
-            table.count = { return player.allIngredients.count }
-            table.obj = { index in return player.allIngredients[index] as AnyObject }
+        if let table = table as? TableView<TableViewFoodCell>{
+            table.count = { return player.allEnhancements.count }
+            table.obj = { index in return player.allEnhancements[index] as AnyObject }
             
             self.scene?.view?.addSubview(table)
             table.reloadData()

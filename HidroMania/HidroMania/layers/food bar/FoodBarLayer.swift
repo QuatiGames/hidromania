@@ -62,12 +62,12 @@ class FoodBarLayer:Layer {
         let ratio = self.size.width*0.4
         let space:CGFloat = self.size.width*0.15
         
-        for i in 1...maxIngredient {
+        for (i,ing) in player.allIngredients.enumerated() {
             let food = Ingredient(color: UIColor.lightGray, size: CGSize(width: ratio, height: ratio) )
-            food.type = "type\(i)"
+            food.type = ing.type
             food.anchorPoint = CGPoint(x: 0.5, y:1.0)
             
-            food.position.y = (ratio + space) * CGFloat(i - 1) + ratio*2
+            food.position.y = (ratio + space) * CGFloat(i) + ratio*2
             food.position.x = self.size.width*0.5
             
             let badge = Badge(radius: food.size.width/4)

@@ -6,10 +6,10 @@
 //  Copyright © 2017 QuatiGames. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 
-class TableViewCellSettings:GenericCell {
+class SettingsCell:GenericCell {
     
     override class var identifier:String {
         return "settingsCell"
@@ -19,9 +19,12 @@ class TableViewCellSettings:GenericCell {
         return "SettingsCell"
     }
     
+    @IBOutlet weak var switchButton: UISwitch!
+    @IBOutlet weak var label: UILabel!
+    
     override func configure(data: AnyObject) {
         if let str = data as? String{
-            self.textLabel?.text = "settings \(str)"
+            self.label.text = "\(str)"
         }
     }
 }

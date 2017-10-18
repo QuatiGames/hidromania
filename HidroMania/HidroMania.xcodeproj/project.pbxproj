@@ -8,12 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		E902C0461F97355300977852 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E902C0421F97355300977852 /* TableView.swift */; };
-		E902C0471F97355300977852 /* TableViewCellSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E902C0431F97355300977852 /* TableViewCellSettings.swift */; };
-		E902C0481F97355300977852 /* TableViewEnhancementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E902C0441F97355300977852 /* TableViewEnhancementCell.swift */; };
+		E902C0471F97355300977852 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E902C0431F97355300977852 /* SettingsCell.swift */; };
 		E902C0491F97355300977852 /* TableViewFoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E902C0451F97355300977852 /* TableViewFoodCell.swift */; };
 		E902C04B1F97365A00977852 /* FoodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E902C04A1F97365A00977852 /* FoodCell.xib */; };
-		E902C04D1F97366C00977852 /* EnhancementCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E902C04C1F97366C00977852 /* EnhancementCell.xib */; };
 		E902C04F1F97367600977852 /* SettingsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E902C04E1F97367600977852 /* SettingsCell.xib */; };
+		E9AFD8731F97511700E66A72 /* Enhancement.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AFD8721F97511700E66A72 /* Enhancement.swift */; };
 		E9ECA6961F96A40E00E9BA93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECA6951F96A40E00E9BA93 /* AppDelegate.swift */; };
 		E9ECA6981F96A40E00E9BA93 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = E9ECA6971F96A40E00E9BA93 /* GameScene.sks */; };
 		E9ECA69A1F96A40E00E9BA93 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = E9ECA6991F96A40E00E9BA93 /* Actions.sks */; };
@@ -39,12 +38,11 @@
 
 /* Begin PBXFileReference section */
 		E902C0421F97355300977852 /* TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
-		E902C0431F97355300977852 /* TableViewCellSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCellSettings.swift; sourceTree = "<group>"; };
-		E902C0441F97355300977852 /* TableViewEnhancementCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewEnhancementCell.swift; sourceTree = "<group>"; };
+		E902C0431F97355300977852 /* SettingsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		E902C0451F97355300977852 /* TableViewFoodCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewFoodCell.swift; sourceTree = "<group>"; };
 		E902C04A1F97365A00977852 /* FoodCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FoodCell.xib; sourceTree = "<group>"; };
-		E902C04C1F97366C00977852 /* EnhancementCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EnhancementCell.xib; sourceTree = "<group>"; };
 		E902C04E1F97367600977852 /* SettingsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsCell.xib; sourceTree = "<group>"; };
+		E9AFD8721F97511700E66A72 /* Enhancement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enhancement.swift; sourceTree = "<group>"; };
 		E9ECA6921F96A40E00E9BA93 /* HidroMania.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HidroMania.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9ECA6951F96A40E00E9BA93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9ECA6971F96A40E00E9BA93 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -85,11 +83,9 @@
 			isa = PBXGroup;
 			children = (
 				E902C0421F97355300977852 /* TableView.swift */,
-				E902C0431F97355300977852 /* TableViewCellSettings.swift */,
-				E902C0441F97355300977852 /* TableViewEnhancementCell.swift */,
+				E902C0431F97355300977852 /* SettingsCell.swift */,
 				E902C0451F97355300977852 /* TableViewFoodCell.swift */,
 				E902C04A1F97365A00977852 /* FoodCell.xib */,
-				E902C04C1F97366C00977852 /* EnhancementCell.xib */,
 				E902C04E1F97367600977852 /* SettingsCell.xib */,
 			);
 			path = table;
@@ -201,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				E9ECA6CD1F96F3F500E9BA93 /* Player.swift */,
+				E9AFD8721F97511700E66A72 /* Enhancement.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -265,7 +262,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E902C04D1F97366C00977852 /* EnhancementCell.xib in Resources */,
 				E9ECA6A11F96A40F00E9BA93 /* Main.storyboard in Resources */,
 				E902C04F1F97367600977852 /* SettingsCell.xib in Resources */,
 				E9ECA6981F96A40E00E9BA93 /* GameScene.sks in Resources */,
@@ -284,6 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9ECA69C1F96A40F00E9BA93 /* GameScene.swift in Sources */,
+				E9AFD8731F97511700E66A72 /* Enhancement.swift in Sources */,
 				E9ECA6CB1F96E8F900E9BA93 /* Badge.swift in Sources */,
 				E9ECA6B91F96AE2500E9BA93 /* FoodBarLayer.swift in Sources */,
 				E9ECA6BF1F96AE4F00E9BA93 /* MarketLayer.swift in Sources */,
@@ -296,11 +293,10 @@
 				E9ECA6B71F96ACCC00E9BA93 /* GameLayer.swift in Sources */,
 				E9ECA6C11F96AE5900E9BA93 /* GameOverLayer.swift in Sources */,
 				E9ECA6BD1F96AE4400E9BA93 /* WaterPathLayer.swift in Sources */,
-				E902C0471F97355300977852 /* TableViewCellSettings.swift in Sources */,
+				E902C0471F97355300977852 /* SettingsCell.swift in Sources */,
 				E902C0461F97355300977852 /* TableView.swift in Sources */,
 				E9ECA6B31F96A97F00E9BA93 /* Layer.swift in Sources */,
 				E9ECA69E1F96A40F00E9BA93 /* GameViewController.swift in Sources */,
-				E902C0481F97355300977852 /* TableViewEnhancementCell.swift in Sources */,
 				E9ECA6C71F96DC4700E9BA93 /* FoodBench.swift in Sources */,
 				E9ECA6961F96A40E00E9BA93 /* AppDelegate.swift in Sources */,
 			);
