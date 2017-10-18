@@ -10,6 +10,7 @@
 		A0761C9E1F96BB8600C9A25C /* Plants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0761C9D1F96BB8600C9A25C /* Plants.swift */; };
 		A0761CA01F96C6C800C9A25C /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0761C9F1F96C6C800C9A25C /* Food.swift */; };
 		A0761CA21F96D93C00C9A25C /* FaceEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0761CA11F96D93C00C9A25C /* FaceEnum.swift */; };
+		A0761CA41F96E43800C9A25C /* Balloon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0761CA31F96E43800C9A25C /* Balloon.swift */; };
 		E9ECA6961F96A40E00E9BA93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECA6951F96A40E00E9BA93 /* AppDelegate.swift */; };
 		E9ECA6981F96A40E00E9BA93 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = E9ECA6971F96A40E00E9BA93 /* GameScene.sks */; };
 		E9ECA69A1F96A40E00E9BA93 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = E9ECA6991F96A40E00E9BA93 /* Actions.sks */; };
@@ -32,6 +33,7 @@
 		A0761C9D1F96BB8600C9A25C /* Plants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plants.swift; sourceTree = "<group>"; };
 		A0761C9F1F96C6C800C9A25C /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		A0761CA11F96D93C00C9A25C /* FaceEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceEnum.swift; sourceTree = "<group>"; };
+		A0761CA31F96E43800C9A25C /* Balloon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Balloon.swift; sourceTree = "<group>"; };
 		E9ECA6921F96A40E00E9BA93 /* HidroMania.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HidroMania.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9ECA6951F96A40E00E9BA93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9ECA6971F96A40E00E9BA93 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				A0761C9D1F96BB8600C9A25C /* Plants.swift */,
 				A0761C9F1F96C6C800C9A25C /* Food.swift */,
 				A0761CA11F96D93C00C9A25C /* FaceEnum.swift */,
+				A0761CA31F96E43800C9A25C /* Balloon.swift */,
 			);
 			path = "water path";
 			sourceTree = "<group>";
@@ -244,6 +247,7 @@
 				E9ECA6BB1F96AE3800E9BA93 /* HudLayer.swift in Sources */,
 				A0761C9E1F96BB8600C9A25C /* Plants.swift in Sources */,
 				E9ECA6B71F96ACCC00E9BA93 /* GameLayer.swift in Sources */,
+				A0761CA41F96E43800C9A25C /* Balloon.swift in Sources */,
 				E9ECA6C11F96AE5900E9BA93 /* GameOverLayer.swift in Sources */,
 				E9ECA6BD1F96AE4400E9BA93 /* WaterPathLayer.swift in Sources */,
 				A0761CA01F96C6C800C9A25C /* Food.swift in Sources */,
