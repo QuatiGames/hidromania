@@ -13,10 +13,16 @@ class GameScene: SKScene {
     
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
+    var gameLayer:GameLayer
     
     
     override init(size: CGSize){
+        
+        //Creating first layer
+        gameLayer = GameLayer(size: size)
+        
         super.init(size: size)
+        
     }
     
     convenience required init?(coder aDecoder: NSCoder) {
@@ -25,9 +31,6 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         self.backgroundColor = UIColor.black
-        
-        //Creating first layer
-        let gameLayer = GameLayer(size: self.size)
         
         self.addChild(gameLayer)
         gameLayer.didMove()
@@ -48,19 +51,22 @@ class GameScene: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchDown(atPoint: t.location(in: self)) }
+        gameLayer.touchesBegan(touches, with: event)
+        
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchMoved(toPoint: t.location(in: self)) }
+        gameLayer.touchesMoved(touches, with: event)
+        
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
+        gameLayer.touchesEnded(touches, with: event)
+        
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
+        gameLayer.touchesCancelled(touches, with: event)
     }
     
     
