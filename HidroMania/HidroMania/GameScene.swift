@@ -39,7 +39,7 @@ class GameScene: SKScene {
     
     
     func touchDown(atPoint pos : CGPoint) {
-        print(pos)
+        
     }
     
     func touchMoved(toPoint pos : CGPoint) {
@@ -52,6 +52,10 @@ class GameScene: SKScene {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         gameLayer.touchesBegan(touches, with: event)
+        
+        if let location = touches.first?.location(in: self){
+            print(location)
+        }
         
     }
     

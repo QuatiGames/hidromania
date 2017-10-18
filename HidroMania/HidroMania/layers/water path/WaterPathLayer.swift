@@ -10,13 +10,19 @@ import SpriteKit
 
 class WaterPathLayer:Layer {
     
-    var pathArray:Array<Plant>?
+    var pathPosition = [Int:CGPoint]()
+    var pathDict = [Int:Plant?]()
+    var timeBettweenSpawns:Double = 2
     
     override func didMove() {
         self.color = UIColor.blue
         
         self.texture = SKTexture(imageNamed: "background")
         
+        configurePoints()
+        createPlant()
+        
+        //pathDict[CGPoint(x: , y: )]
         
         //Testing foods
 //        self.addFood(foodType: FoodType.N)
@@ -71,5 +77,33 @@ class WaterPathLayer:Layer {
             }])
         
         self.run(action)
+    }
+    
+    func configurePoints(){
+        
+        pathPosition = [
+            1:createPT(314.0, 291.000030517578),
+            2:createPT(204.999984741211, 289.500030517578),
+            3:createPT(92.5, 292.500030517578),
+            4:createPT(91.5, 196.500015258789),
+            5:createPT(201.5, 198.500015258789),
+            6:createPT(309.5, 197.000015258789),
+            7:createPT(92.0000152587891, 106.5),
+            8:createPT(200.999984741211, 109.0),
+            9:createPT(309.0, 107.500015258789)
+        ]
+    }
+    
+    func createPT(_ x:Double,_ y:Double) -> CGPoint{
+        return CGPoint(x: x, y: y)
+    }
+    
+    func createPlant(){
+        
+        print("new plant")
+        
+        async(delay: timeBettweenSpawns) {
+            self.createPlant()
+        }
     }
 }
