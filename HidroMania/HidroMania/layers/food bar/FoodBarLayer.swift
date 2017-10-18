@@ -20,7 +20,10 @@ class FoodBarLayer:Layer {
     
     
     override init(size: CGSize) {
-        bench = FoodBench(color: UIColor.cyan.withAlphaComponent(0.3), size: CGSize(width: size.width, height: size.height*0.45) )
+        
+        bench = FoodBench(color: UIColor.cyan.withAlphaComponent(0.3),
+                          size: CGSize(width: size.width, height: size.height*0.45) )
+        
         bench.anchorPoint = CGPoint(x: 1.0, y: 0.5)
         
         tank = Reservoir(color: UIColor.magenta.withAlphaComponent(0.3), size: CGSize(width: size.width*1.5, height: size.height*0.25))
