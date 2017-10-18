@@ -106,10 +106,12 @@ class Plant: SKSpriteNode{
     func defineFoodNeeding() {
         defineMood(moodType: MoodType.neutral)
         self.foodNeeding = FoodType.randomFoodType()
+
         if let type = foodNeeding{
             //Automaticaly add a ballon when a new food need is setted
             self.addingBalloon(type: type)
         }
+
     }
     
     func addingBalloon(type:FoodType) {
