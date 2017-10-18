@@ -38,6 +38,17 @@ class GameScene: SKScene {
     }
     
     
+    func touchDown(atPoint pos : CGPoint) {
+        print(pos)
+    }
+    
+    func touchMoved(toPoint pos : CGPoint) {
+        
+    }
+    
+    func touchUp(atPoint pos : CGPoint) {
+        
+    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         gameLayer.touchesBegan(touches, with: event)

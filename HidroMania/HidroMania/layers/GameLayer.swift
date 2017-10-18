@@ -31,22 +31,22 @@ class GameLayer:Layer{
         
         let foodBarSize =   CGSize(width: size.width/6, height: size.height)
         let hudSize =       CGSize(width: size.width - foodBarSize.width, height: size.height/12)
-        let waterPathSize = CGSize(width: size.width - foodBarSize.width, height: size.height - hudSize.height)
+        let waterPathSize = CGSize(width: size.width - foodBarSize.width, height: size.height)
         
         hud = HudLayer(size: hudSize)
         hud.position.x = 0
         hud.position.y = size.height - hud.size.height
         hud.zPosition = 2
+      
+        foodBar = FoodBarLayer(size: foodBarSize)
+        foodBar.position.x = hudSize.width
+        foodBar.position.y = 0
+        foodBar.zPosition = 1
         
         waterPath = WaterPathLayer(size: waterPathSize)
         waterPath.position.x = 0
         waterPath.position.y = 0
-        
-        foodBar = FoodBarLayer(size: foodBarSize)
-        foodBar.position.x = hudSize.width
-        foodBar.position.y = 0
-        
-        
+        waterPath.zPosition = 0
         
         market = MarketLayer(size: CGSize(width: size.width/2, height: size.height/2 ))
         market.position.x = size.width/2 - market.size.width/2
