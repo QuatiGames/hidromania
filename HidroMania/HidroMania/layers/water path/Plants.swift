@@ -10,6 +10,24 @@ import SpriteKit
 
 enum PlantType: Int{
     case unknown = 0, lettuce, cabbage, chive, parsley
+    
+    //Find maxium enum value
+    private static let _max: PlantType.RawValue = {
+        var maxValue: Int = 0
+        while let _ = PlantType(rawValue: maxValue){
+            maxValue += 1
+        }
+        
+        return maxValue - 1
+    }()
+    
+    //return a random PlantType value
+    static func randomPlantType() -> PlantType {
+        //Pick and return a new value from 1 to _max
+        let rand = arc4random_uniform(UInt32(_max - 1)) + 1
+        
+        return PlantType(rawValue: Int(rand))!
+    }
 }
 
 enum LevelType: Int{
@@ -47,7 +65,7 @@ class Plant: SKSpriteNode{
     var moodType:MoodType
     var moodSprite:SKSpriteNode
     var balloonSprite:Balloon?
-    var foodNeeding:FoodType?
+    var foodNeeding:PlantType?
     var levelType: LevelType
     let plantType: PlantType
     var isReadyToHarvest: Bool
@@ -78,7 +96,8 @@ class Plant: SKSpriteNode{
     }
     
     func defineFoodNeeding() {
-        self.foodNeeding = FoodType.randomFoodType()
+        defineMood(moodType: MoodType.neutral)
+        self.foodNeeding = PlantType.randomFoodType()
         
         //Automaticaly add a ballon when a new food need is setted
         self.addingBalloon()
@@ -115,6 +134,7 @@ class Plant: SKSpriteNode{
     
     /* Behavior functions */
     func runIdleAction() {
+        self.defineMood(moodType: MoodType.happy)
         self.removeAllActions()
         
         let bouncingMovement = SKAction.sequence([SKAction.resize(toWidth: self.normalSize.width + 20, height: self.normalSize.height - 20, duration: 1),
@@ -124,6 +144,7 @@ class Plant: SKSpriteNode{
     }
     
     func runDeath() {
+        self.defineMood(moodType: MoodType.sad)
         self.removeAllActions()
         
         let dieAnimation = SKAction.sequence([SKAction.run {
@@ -131,7 +152,10 @@ class Plant: SKSpriteNode{
                                                 },
                                               SKAction.colorize(with: UIColor.darkGray, colorBlendFactor: 1, duration: 1),
                                               SKAction.resize(toWidth: self.normalSize.width + 20, height: self.normalSize.height - 40, duration: 1),
-                                              SKAction.fadeOut(withDuration: 0.5)])
+                                              SKAction.fadeOut(withDuration: 0.5),
+                                              SKAction.run {
+                                                self.removeFromParent()
+            }])
         self.run(dieAnimation)
     }
     

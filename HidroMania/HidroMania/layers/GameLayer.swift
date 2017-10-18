@@ -84,7 +84,6 @@ class GameLayer:Layer{
     
     override func didMove() {
         //displayMarket()
-        
     }
     
     func displayMarket(){
