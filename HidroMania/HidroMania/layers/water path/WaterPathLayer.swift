@@ -46,9 +46,33 @@ class WaterPathLayer:Layer {
         }
         
         addFood(foodType: .N)
+        addFood(foodType: .K)
+        addFood(foodType: .KK)
+        addFood(foodType: .Mg)
+        addFood(foodType: .KS)
+        addFood(foodType: .KN)
+        
         
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for t in touches {
+            let location = t.location(in: self)
+            
+            for node in self.nodes(at: location){
+                if node is Plant{
+                    if let p = node as? Plant {
+                        if p.isReadyToHarvest {
+                            p.removeFromParent()
+                            player.money += 100
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    private var  aux = Array<Int>()
     
     override func update(delta: Double) {
         for f in foods {
@@ -70,6 +94,21 @@ class WaterPathLayer:Layer {
                 }
             }
             
+        }
+        
+        
+        //Cleaning
+        for (key, plant) in pathDict{
+            
+            if let p = plant {
+                if(p.isDead){
+                    aux.append(p.key)
+                }
+            }
+        }
+        
+        for k in aux {
+            pathDict[k] = nil
         }
     }
     
@@ -93,17 +132,6 @@ class WaterPathLayer:Layer {
         
         plant.runIdleAction()
         plant.defineFoodNeeding()
-        
-        let action = SKAction.sequence([SKAction.wait(forDuration: 3),
-                                        SKAction.run {
-                                            plant.runEating()
-            },
-                                        SKAction.wait(forDuration: 5),
-                                        SKAction.run {
-                                            plant.defineFoodNeeding()
-            }])
-        
-        self.run(action)
         
         return plant
     }
@@ -135,6 +163,7 @@ class WaterPathLayer:Layer {
             if let pos = pathPosition[index]{
                 let plant = addPlant(plantType: PlantType.randomPlantType(), position: pos)
                 pathDict[index] = plant
+                plant.key = index
             }
         }
         

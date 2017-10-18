@@ -69,7 +69,8 @@ class Plant: SKSpriteNode{
     var levelType: LevelType
     let plantType: PlantType
     var isReadyToHarvest: Bool
-    
+    var isDead:Bool = false
+    var key:Int = 0;
     
     
     init(plantType: PlantType, positionOnPath: Int) {
@@ -104,17 +105,23 @@ class Plant: SKSpriteNode{
     }
     
     func defineFoodNeeding() {
-        defineMood(moodType: MoodType.neutral)
-        self.foodNeeding = FoodType.randomFoodType()
+        
+        if balloonSprite != nil {
+        
+            defineMood(moodType: MoodType.neutral)
+            self.foodNeeding = FoodType.randomFoodType()
 
-        if let type = foodNeeding{
-            //Automaticaly add a ballon when a new food need is setted
-            self.addingBalloon(type: type)
+            if let type = foodNeeding{
+                //Automaticaly add a ballon when a new food need is setted
+                
+                self.addingBalloon(type: type)
+            }
         }
 
     }
     
     func addingBalloon(type:FoodType) {
+        
         self.balloonSprite = Balloon(foodType: type)
         self.balloonSprite?.position.x = self.size.width/4
         self.balloonSprite?.position.y = self.size.height/4
@@ -199,8 +206,6 @@ class Plant: SKSpriteNode{
     
     
     
-    
-    
     var growth:Int = 0 {
         didSet{
             if growth >= 3{
@@ -212,9 +217,10 @@ class Plant: SKSpriteNode{
     }
     var starveDisposer:Disposable?
     var starveDuration:Double = 5
-    var starve:Int = 0 {
+    var starve:Int = 3 {
         didSet{
             if starve < 0 {
+                self.isDead = true
                 self.runDeath()
                 return
             }
@@ -228,6 +234,7 @@ class Plant: SKSpriteNode{
                 break
             case 2:
                 defineMood(moodType: .neutral)
+                defineFoodNeeding()
                 break
             case 3:
                 defineMood(moodType: .happy)
@@ -240,6 +247,10 @@ class Plant: SKSpriteNode{
     
     func eat(_ food:Food){
         self.runEating()
+        
+        balloonSprite?.removeFromParent()
+        balloonSprite = nil
+        
         starve = 3;
         growth += 1
         starveDisposer?.dispose()
