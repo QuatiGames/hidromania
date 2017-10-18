@@ -33,10 +33,10 @@ class WaterPathLayer:Layer {
         //Testing plant
         let plant = Plant(plantType: PlantType.cabbage, color: UIColor.clear, positionOnPath: 1)
 //        print("\(plant.levelType)")
-        plant.position.x = 91
-        plant.position.y = 89
+        plant.position.x = 88
+        plant.position.y = 105
         self.addChild(plant)
-//        plant.levelUp()
+        plant.levelUp()
 //        plant.levelUp()
 //        plant.levelUp()
 //        plant.levelUp()
