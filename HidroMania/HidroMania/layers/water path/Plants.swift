@@ -98,7 +98,7 @@ class Plant: SKSpriteNode{
         
         self.addChild(moodSprite)
         
-        starve = 3
+        starve = 4
         decreaseStarve()
     }
     
@@ -108,7 +108,7 @@ class Plant: SKSpriteNode{
     
     func defineFoodNeeding() {
         
-        if balloonSprite != nil {
+        if balloonSprite == nil {
         
             defineMood(moodType: MoodType.neutral)
             self.foodNeeding = FoodType.randomFoodType()
@@ -225,9 +225,10 @@ class Plant: SKSpriteNode{
             }
         }
     }
+    
     var starveDisposer:Disposable?
-    var starveDuration:Double = 5
-    var starve:Int = 3 {
+    var starveDuration:Double = 6
+    var starve:Int = 4 {
         didSet{
             if starve < 0 {
                 self.isDead = true
@@ -247,6 +248,9 @@ class Plant: SKSpriteNode{
                 defineFoodNeeding()
                 break
             case 3:
+                defineMood(moodType: .happy)
+                break
+            case 4:
                 defineMood(moodType: .happy)
                 break
             default:

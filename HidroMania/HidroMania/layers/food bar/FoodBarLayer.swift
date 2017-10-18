@@ -21,15 +21,15 @@ class FoodBarLayer:Layer {
     
     override init(size: CGSize) {
         
-        bench = FoodBench(color: UIColor.cyan.withAlphaComponent(0.3),
+        bench = FoodBench(color: UIColor.cyan.withAlphaComponent(0.0),
                           size: CGSize(width: size.width, height: size.height*0.45) )
         
         bench.anchorPoint = CGPoint(x: 1.0, y: 0.5)
         
-        tank = Reservoir(color: UIColor.magenta.withAlphaComponent(0.3), size: CGSize(width: size.width*1.5, height: size.height*0.25))
+        tank = Reservoir(color: UIColor.magenta.withAlphaComponent(0.0), size: CGSize(width: size.width*1.5, height: size.height*0.25))
         tank.anchorPoint = CGPoint(x: 1.0, y:0.0)
         
-        trash = SKSpriteNode(color: UIColor.red.withAlphaComponent(0.5), size: CGSize(width: size.width*0.5, height: size.height*0.15))
+        trash = SKSpriteNode(color: UIColor.red.withAlphaComponent(0.0), size: CGSize(width: size.width*0.5, height: size.height*0.15))
         trash.anchorPoint = CGPoint(x: 1.0, y:1.0)
         
         super.init(size: size)
@@ -97,9 +97,9 @@ class FoodBarLayer:Layer {
                     touchIngredient(node)
                 }
                 
-//                if node is Food{
-//                    touchIngredient(node)
-//                }
+                if node is Food{
+                    touchFood(node)
+                }
             }
         }
     }
@@ -177,8 +177,8 @@ class FoodBarLayer:Layer {
     }
     
     func dumpFood(){
-        print("dumb food")
-        bench.ingredients.removeAll()
+        //print("dumb food")
+        //bench.ingredients.removeAll()
     }
     
     func touchFood(_ node:SKNode){

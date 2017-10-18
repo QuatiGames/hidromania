@@ -141,7 +141,6 @@ class WaterPathLayer:Layer {
         self.addChild(plant)
         
         plant.runIdleAction()
-        plant.defineFoodNeeding()
         
         return plant
     }

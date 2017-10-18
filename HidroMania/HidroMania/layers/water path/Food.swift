@@ -54,7 +54,7 @@ class Food: SKSpriteNode {
         
         self.zPosition = 4
         
-        async(delay: 60) {
+        let _ = async(delay: 60) {
             self.removeFromParent()
             self.isDead = true
         }
