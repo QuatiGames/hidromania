@@ -75,6 +75,8 @@ class GameLayer:Layer{
         
         self.addChild(backgroundShadow)
         
+        foodBar.waterPath = self.waterPath
+        
     }
     
     

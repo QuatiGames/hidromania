@@ -12,7 +12,7 @@ class WaterPathLayer:Layer {
     
     var pathPosition = [Int:CGPoint]()
     var pathDict = [Int:Plant?]()
-    var timeBettweenSpawns:Double = 2
+    var timeBettweenSpawns:Double = 8
     var foods = NSMutableArray()
     
     
@@ -35,23 +35,6 @@ class WaterPathLayer:Layer {
         
         configurePoints()
         createPlant()
-        
-        //pathDict[CGPoint(x: , y: )]
-        
-        //Testing foods
-//        self.addFood(foodType: FoodType.N)
-        
-        async(delay: 2) {
-            self.addFood(foodType: .N)
-        }
-        
-        addFood(foodType: .N)
-        addFood(foodType: .K)
-        addFood(foodType: .KK)
-        addFood(foodType: .Mg)
-        addFood(foodType: .KS)
-        addFood(foodType: .KN)
-        
         
     }
     
@@ -165,6 +148,8 @@ class WaterPathLayer:Layer {
     }
     
     func createPlant(){
+        
+        timeBettweenSpawns *=  0.95
         
         let index = Int(UInt32(9).random(1))
         

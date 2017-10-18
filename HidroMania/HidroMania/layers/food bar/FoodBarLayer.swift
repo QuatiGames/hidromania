@@ -18,6 +18,8 @@ class FoodBarLayer:Layer {
     var tank:Reservoir
     var trash:SKSpriteNode
     
+    var waterPath:WaterPathLayer?
+    
     
     override init(size: CGSize) {
         
@@ -66,9 +68,8 @@ class FoodBarLayer:Layer {
         let space:CGFloat = self.size.width*0.05
         
         for (i,ing) in player.allIngredients.enumerated() {
-//            let food = Ingredient(color: UIColor.lightGray, size: CGSize(width: ratio, height: ratio) )
+
             let food = Ingredient(color: UIColor.clear, size: CGSize(width: ratio, height: ratio), data: ing)
-//            food.type = ing.type
             food.anchorPoint = CGPoint(x: 0.5, y:1.0)
             
             food.position.y = (ratio + space) * CGFloat(i) + ratio*2
@@ -153,7 +154,11 @@ class FoodBarLayer:Layer {
     }
     
     func releaseFoodOnReservoir(){
-        print("Releasing food")
+        
+        if let f = selectedObject as? Food {
+            print("Releasing food \(f.foodType)" )
+            waterPath?.addFood(foodType: f.foodType)
+        }
     }
     
     func touchIngredient(_ node:SKNode){
@@ -182,17 +187,13 @@ class FoodBarLayer:Layer {
     }
     
     func touchFood(_ node:SKNode){
+        selectedObject?.removeFromParent()
+        selectedObject = node
         
-        print("touch food")
+        if selectedObject?.parent != self {
+            selectedObject?.move(toParent: self)
+        }
         
-//        if let food:Food = node as? Food{
-//            
-//            if (selectedObject != nil){
-//                //Remove other ingredient
-//                selectedObject?.removeFromParent()
-//            }
-//            
-//            selectedObject = food.newCopy()
-//        }
+        bench.ingredients.removeAll()
     }
 }
