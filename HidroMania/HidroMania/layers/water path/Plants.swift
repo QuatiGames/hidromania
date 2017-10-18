@@ -14,6 +14,26 @@ enum PlantType: Int{
 
 enum LevelType: Int{
     case unknown = 0, baby, middle, adult
+    
+    //Find maxium enum value
+    private static let _max: LevelType.RawValue = {
+        var maxValue: Int = 0
+        while let _ = LevelType(rawValue: maxValue){
+            maxValue += 1
+        }
+        
+        return maxValue - 1
+    }()
+    
+    //Return te next element of the enum
+    static func nextLevelTypeOf(levelType: LevelType.RawValue) -> LevelType {
+        var next = levelType
+        if next < LevelType._max {
+            next += 1
+        }
+        
+        return LevelType(rawValue: next)!
+    }
 }
 
 enum MoodType: Int{
@@ -21,20 +41,35 @@ enum MoodType: Int{
 }
 
 class Plant: SKSpriteNode{
+    let normalSize: CGSize = CGSize.init(width: 100, height: 100)
     
     var positionOnPath: Int
     var moodType:MoodType
+    var moodSprite:SKSpriteNode
     var foodNeeding:FoodType?
     var levelType: LevelType
     let plantType: PlantType
+    var isReadyToHarvest: Bool
     
-    init(texture: SKTexture?, color: UIColor, size: CGSize, positionOnPath: Int, plantType: PlantType) {
+    init(plantType: PlantType, color: UIColor, positionOnPath: Int) {
         self.positionOnPath = positionOnPath
         self.plantType = plantType
-        self.moodType = MoodType.happy //Starts whith a happy mood
+        self.moodType = MoodType.happy //Starts with a happy mood
         self.levelType = LevelType.baby //Starts as a baby
+        self.isReadyToHarvest = false //Starts not ready to harvest
+        self.moodSprite = SKSpriteNode.init() //Place holder
         
-        super.init(texture: texture, color: color, size: size)
+        let texture = SKTexture(imageNamed: "\(self.plantType)\(self.levelType.rawValue)")
+        
+        super.init(texture: texture, color: color, size: normalSize)
+        
+        //Adding face
+        self.defineTextureOnLevelAndPlantType()
+        self.moodSprite = SKSpriteNode(texture: SKTexture(imageNamed: "mood\(self.moodType.rawValue)"), size: CGSize(width: 100, height: 100))
+        self.moodSprite.zPosition = 3
+        self.moodSprite.position.x = 0
+        self.moodSprite.position.y = 0
+        self.addChild(moodSprite)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -44,4 +79,53 @@ class Plant: SKSpriteNode{
     func defineFoodNeeding() {
         self.foodNeeding = FoodType.randomFoodType()
     }
+    
+    /*Texture changing functions*/
+    func defineTextureOnLevelAndPlantType(){
+        let imageName = "\(self.plantType)\(self.levelType.rawValue)"
+//        print("Plant log: \(imageName)")
+        self.texture = SKTexture(imageNamed: imageName)
+        
+        self.moodSprite.zPosition = 3
+    }
+    
+    func defineMood(moodType: MoodType){
+        self.moodType = moodType
+        
+        let imageName = "mood\(self.moodType.rawValue)"
+        self.moodSprite.texture = SKTexture(imageNamed: imageName)
+    }
+    
+    func levelUp(){
+        self.levelType = LevelType.nextLevelTypeOf(levelType: self.levelType.rawValue)
+//        print("Plant log: \(self.levelType)")
+        self.defineTextureOnLevelAndPlantType()
+    }
+    
+    /* Behavior functions */
+    func runIdleAction() {
+//        let bouncingMovement:SKAction = SKAction.sequence([SKAction.scale(to: CGSize(width: self.normalSize.width, height: self.normalSize.height), duration: 1),
+//                                                           SKAction.scale(to: CGSize(width: self.normalSize.width + 20, height: self.normalSize.height - 20), duration: 1)])
+        let bouncingMovement = SKAction.sequence([SKAction.resize(toWidth: self.normalSize.width + 20, height: self.normalSize.height - 20, duration: 1),
+                                          SKAction.resize(toWidth: self.normalSize.width, height: self.normalSize.height, duration: 1)])
+        
+        self.run(SKAction.repeatForever(bouncingMovement))
+    }
+    
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

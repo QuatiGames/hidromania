@@ -14,12 +14,12 @@ enum FoodType: Int {
     
     //Find maxium enum value
     private static let _count: FoodType.RawValue = {
-        var maxValue: Int = 1
+        var maxValue: Int = 0
         while let _ = FoodType(rawValue: maxValue){
             maxValue += 1
         }
         
-        return maxValue
+        return maxValue - 1
     }()
     
     //return a random FoodType value
