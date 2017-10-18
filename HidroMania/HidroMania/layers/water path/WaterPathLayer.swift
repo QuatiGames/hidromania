@@ -31,21 +31,8 @@ class WaterPathLayer:Layer {
 //            }]))
         
         //Testing plant
-        let plant = Plant(plantType: PlantType.parsley, color: UIColor.clear, positionOnPath: 1)
-//        print("\(plant.levelType)")
-        plant.position.x = 88
-        plant.position.y = 109
-        self.addChild(plant)
-        plant.levelUp()
-        plant.levelUp()
-//        plant.levelUp()
-//        plant.levelUp()
-//        plant.defineMood(moodType: MoodType.neutral)
-//        plant.runIdleAction()
-//        let bouncing = SKAction.sequence([SKAction.resize(toWidth: 50, height: 120, duration: 1),
-//                                          SKAction.resize(toWidth: 100, height: 100, duration: 1)])
-//        plant.run(SKAction.repeatForever(bouncing))
-            plant.runDeath()
+        self.addPlant(plantType: PlantType.parsley)
+        
     }
     
     //Don't know if it is necessary
@@ -70,7 +57,13 @@ class WaterPathLayer:Layer {
         food.runMovement()
     }
     
-    func addPlant() {
+    func addPlant(plantType: PlantType) {
+        let plant = Plant(plantType: plantType, positionOnPath: 1)
         
+        plant.position.x = 88
+        plant.position.y = 109
+        
+        self.addChild(plant)
+        plant.runIdleAction()
     }
 }

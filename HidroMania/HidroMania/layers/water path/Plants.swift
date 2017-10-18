@@ -51,7 +51,7 @@ class Plant: SKSpriteNode{
     let plantType: PlantType
     var isReadyToHarvest: Bool
     
-    init(plantType: PlantType, color: UIColor, positionOnPath: Int) {
+    init(plantType: PlantType, positionOnPath: Int) {
         self.positionOnPath = positionOnPath
         self.plantType = plantType
         self.moodType = MoodType.happy //Starts with a happy mood
@@ -61,7 +61,7 @@ class Plant: SKSpriteNode{
         
         let texture = SKTexture(imageNamed: "\(self.plantType)\(self.levelType.rawValue)")
         
-        super.init(texture: texture, color: color, size: normalSize)
+        super.init(texture: texture, color: UIColor.clear, size: normalSize)
         
         //Adding face
         self.defineTextureOnLevelAndPlantType()
@@ -102,13 +102,17 @@ class Plant: SKSpriteNode{
     
     /* Behavior functions */
     func runIdleAction() {
+        self.removeAllActions()
+        
         let bouncingMovement = SKAction.sequence([SKAction.resize(toWidth: self.normalSize.width + 20, height: self.normalSize.height - 20, duration: 1),
-                                          SKAction.resize(toWidth: self.normalSize.width, height: self.normalSize.height, duration: 1)])
+                                                  SKAction.resize(toWidth: self.normalSize.width, height: self.normalSize.height, duration: 1)])
         
         self.run(SKAction.repeatForever(bouncingMovement))
     }
     
     func runDeath() {
+        self.removeAllActions()
+        
         let dieAnimation = SKAction.sequence([SKAction.run {
                                                 self.defineMood(moodType: MoodType.sad)
                                                 },
@@ -116,6 +120,20 @@ class Plant: SKSpriteNode{
                                               SKAction.resize(toWidth: self.normalSize.width + 20, height: self.normalSize.height - 40, duration: 1),
                                               SKAction.fadeOut(withDuration: 0.5)])
         self.run(dieAnimation)
+    }
+    
+    func runEating() {
+        self.removeAllActions()
+        
+        let eatAnimation = SKAction.sequence([SKAction.resize(toWidth: self.normalSize.width + 20, height: self.normalSize.height - 20, duration: 0.5),
+                                     SKAction.resize(toWidth: self.normalSize.width, height: self.normalSize.height, duration: 0.3),
+                                     SKAction.resize(toWidth: self.normalSize.width + 20, height: self.normalSize.height - 20, duration: 0.3),
+                                     SKAction.resize(toWidth: self.normalSize.width, height: self.normalSize.height, duration: 0.3),
+                                     SKAction.resize(toWidth: self.normalSize.width + 20, height: self.normalSize.height - 20, duration: 0.3),
+                                     SKAction.run {
+                                        self.runIdleAction()
+            }])
+        self.run(eatAnimation)
     }
 }
 
