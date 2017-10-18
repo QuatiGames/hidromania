@@ -72,6 +72,8 @@ class Plant: SKSpriteNode{
     var isDead:Bool = false
     var key:Int = 0;
     
+    var eatAnimation:SKAction?
+    
     
     init(plantType: PlantType, positionOnPath: Int) {
         self.positionOnPath = positionOnPath
@@ -180,7 +182,7 @@ class Plant: SKSpriteNode{
     func runEating() {
         self.removeAllActions()
         
-        let eatAnimation = SKAction.sequence([SKAction.resize(toWidth: self.normalSize.width + 20, height: self.normalSize.height - 20, duration: 0.5),
+        eatAnimation = SKAction.sequence([SKAction.resize(toWidth: self.normalSize.width + 20, height: self.normalSize.height - 20, duration: 0.5),
                                      SKAction.resize(toWidth: self.normalSize.width, height: self.normalSize.height, duration: 0.3),
                                      SKAction.resize(toWidth: self.normalSize.width + 20, height: self.normalSize.height - 20, duration: 0.3),
                                      SKAction.resize(toWidth: self.normalSize.width, height: self.normalSize.height, duration: 0.3),
@@ -188,7 +190,7 @@ class Plant: SKSpriteNode{
                                      SKAction.run {
                                         self.runIdleAction()
             }])
-        self.run(eatAnimation)
+        self.run(eatAnimation!)
         
         //Destroy balloon
         self.balloonSprite?.removeFromParent()
@@ -206,12 +208,20 @@ class Plant: SKSpriteNode{
     
     
     
+    var harverst = 0;
     var growth:Int = 0 {
         didSet{
             if growth >= 3{
                 levelUp()
                 starve = 3
                 growth = 0
+                
+                harverst += 1
+                
+                if harverst == 3 {
+                    self.run(SKAction.repeatForever(eatAnimation!))
+                    isReadyToHarvest = true
+                }
             }
         }
     }
