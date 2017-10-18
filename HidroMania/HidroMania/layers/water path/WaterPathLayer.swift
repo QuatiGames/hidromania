@@ -10,8 +10,22 @@ import SpriteKit
 
 class WaterPathLayer:Layer {
     
+    var pathArray:Array<Plant>?
+    
     override func didMove() {
         self.color = UIColor.blue
+        
+        self.texture = SKTexture(imageNamed: "background.png")
     }
     
+    //Don't know if it is necessary
+    override init(size: CGSize) {
+        
+        
+        super.init(size: size)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }

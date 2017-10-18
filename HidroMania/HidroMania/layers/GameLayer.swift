@@ -18,19 +18,22 @@ class GameLayer:Layer{
     override init(size:CGSize){
         let foodBarSize =   CGSize(width: size.width/6, height: size.height)
         let hudSize =       CGSize(width: size.width - foodBarSize.width, height: size.height/12)
-        let waterPathSize = CGSize(width: size.width - foodBarSize.width, height: size.height - hudSize.height)
+        let waterPathSize = CGSize(width: size.width - foodBarSize.width, height: size.height)
         
         hud = HudLayer(size: hudSize)
         hud.position.x = 0
         hud.position.y = size.height
-        
-        waterPath = WaterPathLayer(size: waterPathSize)
-        waterPath.position.x = 0
-        waterPath.position.y = size.height - hudSize.height
+        hud.zPosition = 2
         
         foodBar = FoodBarLayer(size: foodBarSize)
         foodBar.position.x = hudSize.width
         foodBar.position.y = size.height
+        foodBar.zPosition = 1
+        
+        waterPath = WaterPathLayer(size: waterPathSize)
+        waterPath.position.x = 0
+        waterPath.position.y = size.height
+        waterPath.zPosition = 0
         
         super.init(size: size)
         
