@@ -52,14 +52,21 @@ class FoodBarLayer:Layer {
     func setupFoods(){
         
         let ratio = self.size.width*0.4
-        let space:CGFloat = self.size.width*0.1
+        let space:CGFloat = self.size.width*0.15
         
         for i in 1...maxIngredient {
-            let food = Ingredient(color: UIColor.white, size: CGSize(width: ratio, height: ratio) )
+            let food = Ingredient(color: UIColor.lightGray, size: CGSize(width: ratio, height: ratio) )
             food.anchorPoint = CGPoint(x: 0.5, y:1.0)
             
             food.position.y = -(ratio + space) * CGFloat(i - 1) - ratio
             food.position.x = self.size.width*0.5
+            
+            let badge = Badge(radius: food.size.width/4)
+            badge.position.x = food.size.width/2
+            badge.position.y = 0
+            food.addChild(badge)
+            
+            badge.number = 0
             
             foodArray.append(food)
             self.addChild(food)

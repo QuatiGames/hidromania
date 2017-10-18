@@ -26,6 +26,7 @@
 		E9ECA6C51F96BCCE00E9BA93 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECA6C41F96BCCE00E9BA93 /* Ingredient.swift */; };
 		E9ECA6C71F96DC4700E9BA93 /* FoodBench.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECA6C61F96DC4700E9BA93 /* FoodBench.swift */; };
 		E9ECA6C91F96E2FE00E9BA93 /* Reservoir.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECA6C81F96E2FE00E9BA93 /* Reservoir.swift */; };
+		E9ECA6CB1F96E8F900E9BA93 /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECA6CA1F96E8F900E9BA93 /* Badge.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		E9ECA6C41F96BCCE00E9BA93 /* Ingredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		E9ECA6C61F96DC4700E9BA93 /* FoodBench.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodBench.swift; sourceTree = "<group>"; };
 		E9ECA6C81F96E2FE00E9BA93 /* Reservoir.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reservoir.swift; sourceTree = "<group>"; };
+		E9ECA6CA1F96E8F900E9BA93 /* Badge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				E9ECA6C41F96BCCE00E9BA93 /* Ingredient.swift */,
 				E9ECA6C61F96DC4700E9BA93 /* FoodBench.swift */,
 				E9ECA6C81F96E2FE00E9BA93 /* Reservoir.swift */,
+				E9ECA6CA1F96E8F900E9BA93 /* Badge.swift */,
 			);
 			path = "food bar";
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9ECA69C1F96A40F00E9BA93 /* GameScene.swift in Sources */,
+				E9ECA6CB1F96E8F900E9BA93 /* Badge.swift in Sources */,
 				E9ECA6B91F96AE2500E9BA93 /* FoodBarLayer.swift in Sources */,
 				E9ECA6BF1F96AE4F00E9BA93 /* MarketLayer.swift in Sources */,
 				E9ECA6C91F96E2FE00E9BA93 /* Reservoir.swift in Sources */,
