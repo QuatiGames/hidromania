@@ -154,12 +154,12 @@ func async(delay:Double = 0,_ block: @escaping () -> () ) -> Disposable{
 
 //Double Extension
 
-extension UInt32 {
+public extension UInt32 {
     func random() -> UInt32 {
         return arc4random() % self
     }
     
-    func random(low:UInt32) -> UInt32 {
+    func random(_ low:UInt32) -> UInt32 {
         return arc4random() % (self - low) + low
     }
 }

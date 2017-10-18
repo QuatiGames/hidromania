@@ -25,7 +25,7 @@ enum FoodType: Int {
     //return a random FoodType value
     static func randomFoodType() -> FoodType {
         //Pick and return a new value
-        let rand = arc4random_uniform(UInt32(_count))
+        let rand = UInt32(_count).random(1)
         
         return FoodType(rawValue: Int(rand))!
     }
