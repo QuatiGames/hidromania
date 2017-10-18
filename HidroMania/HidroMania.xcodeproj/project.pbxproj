@@ -25,6 +25,7 @@
 		E9ECA6C31F96AEB600E9BA93 /* MenuLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECA6C21F96AEB600E9BA93 /* MenuLayer.swift */; };
 		E9ECA6C51F96BCCE00E9BA93 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECA6C41F96BCCE00E9BA93 /* Ingredient.swift */; };
 		E9ECA6C71F96DC4700E9BA93 /* FoodBench.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECA6C61F96DC4700E9BA93 /* FoodBench.swift */; };
+		E9ECA6C91F96E2FE00E9BA93 /* Reservoir.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECA6C81F96E2FE00E9BA93 /* Reservoir.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		E9ECA6C21F96AEB600E9BA93 /* MenuLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuLayer.swift; sourceTree = "<group>"; };
 		E9ECA6C41F96BCCE00E9BA93 /* Ingredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		E9ECA6C61F96DC4700E9BA93 /* FoodBench.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodBench.swift; sourceTree = "<group>"; };
+		E9ECA6C81F96E2FE00E9BA93 /* Reservoir.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reservoir.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				E9ECA6B81F96AE2500E9BA93 /* FoodBarLayer.swift */,
 				E9ECA6C41F96BCCE00E9BA93 /* Ingredient.swift */,
 				E9ECA6C61F96DC4700E9BA93 /* FoodBench.swift */,
+				E9ECA6C81F96E2FE00E9BA93 /* Reservoir.swift */,
 			);
 			path = "food bar";
 			sourceTree = "<group>";
@@ -237,6 +240,7 @@
 				E9ECA69C1F96A40F00E9BA93 /* GameScene.swift in Sources */,
 				E9ECA6B91F96AE2500E9BA93 /* FoodBarLayer.swift in Sources */,
 				E9ECA6BF1F96AE4F00E9BA93 /* MarketLayer.swift in Sources */,
+				E9ECA6C91F96E2FE00E9BA93 /* Reservoir.swift in Sources */,
 				E9ECA6C31F96AEB600E9BA93 /* MenuLayer.swift in Sources */,
 				E9ECA6BB1F96AE3800E9BA93 /* HudLayer.swift in Sources */,
 				E9ECA6C51F96BCCE00E9BA93 /* Ingredient.swift in Sources */,

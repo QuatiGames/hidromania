@@ -13,13 +13,18 @@ class FoodBarLayer:Layer {
     
     var foodArray:Array = Array<Ingredient>()
     var maxIngredient = 5;
-    var selectedIngredient:Ingredient? = nil
+    var selectedObject:SKNode? = nil
     var bench:FoodBench
+    var tank:Reservoir
+    
     
     override init(size: CGSize) {
-        bench = FoodBench(color: UIColor.cyan, size: CGSize(width: size.width, height: size.height*0.35) )
-        bench.alpha = 0.3
+        bench = FoodBench(color: UIColor.cyan.withAlphaComponent(0.3), size: CGSize(width: size.width, height: size.height*0.5) )
         bench.anchorPoint = CGPoint(x: 1.0, y: 0.5)
+        
+        tank = Reservoir(color: UIColor.magenta.withAlphaComponent(0.3), size: CGSize(width: size.width*1.5, height: size.height*0.35))
+        tank.anchorPoint = CGPoint(x: 1.0, y:0.0)
+        
         super.init(size: size)
     }
     
@@ -31,10 +36,14 @@ class FoodBarLayer:Layer {
     override func didMove() {
         self.color = UIColor.yellow
         
-        bench.position.y = -self.size.height/2
+        bench.position.y = -self.size.height*0.4
         bench.position.x = 0
-        
         self.addChild(bench)
+        
+        tank.position.y = -self.size.height
+        tank.position.x = 0
+        self.addChild(tank)
+        
         
         setupFoods()
     }
@@ -64,16 +73,12 @@ class FoodBarLayer:Layer {
             
             for node in self.nodes(at: location){
                 if node is Ingredient{
-                    if let ingredient:Ingredient = node as? Ingredient{
-                        
-                        if (selectedIngredient != nil){
-                            //Remove other ingredient
-                            selectedIngredient?.removeFromParent()
-                        }
-                        
-                        selectedIngredient = ingredient.newCopy()
-                    }
+                    touchIngredient(node)
                 }
+                
+//                if node is Food{
+//                    touchIngredient(node)
+//                }
             }
         }
         
@@ -81,11 +86,11 @@ class FoodBarLayer:Layer {
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        if selectedIngredient != nil{
+        if selectedObject != nil{
             
             for t in touches {
                 let location = t.location(in: self)
-                selectedIngredient?.position = location
+                selectedObject?.position = location
             }
             
         }
@@ -98,18 +103,59 @@ class FoodBarLayer:Layer {
             let location = t.location(in: self)
             for node in self.nodes(at: location){
                 if node == bench{
-                    if let ingredient = selectedIngredient {
-                        bench.ingredients.append(ingredient)
-                        print("Adding ingredient")
-                    }
+                    releaseIngredientOnTable()
+                }
+                
+                if node == tank{
+                    releaseFoodOnReservoir()
                 }
             }
         }
-    
-    
         
         //Remove ingredient
-        selectedIngredient?.removeFromParent()
+        selectedObject?.removeFromParent()
+        
+        selectedObject = nil
     }
     
+    
+    func releaseIngredientOnTable(){
+        if let ingredient = selectedObject as? Ingredient {
+            bench.ingredients.append(ingredient)
+            print("Adding ingredient")
+            
+            print("Decreasing number of ingredients")
+        }
+    }
+    
+    func releaseFoodOnReservoir(){
+        print("Releasing food")
+    }
+    
+    func touchIngredient(_ node:SKNode){
+        if let ingredient:Ingredient = node as? Ingredient{
+            
+            if (selectedObject != nil){
+                //Remove other ingredient
+                selectedObject?.removeFromParent()
+            }
+            
+            selectedObject = ingredient.newCopy()
+        }
+    }
+    
+    func touchFood(_ node:SKNode){
+        
+        print("touch food")
+        
+//        if let food:Food = node as? Food{
+//            
+//            if (selectedObject != nil){
+//                //Remove other ingredient
+//                selectedObject?.removeFromParent()
+//            }
+//            
+//            selectedObject = food.newCopy()
+//        }
+    }
 }
