@@ -69,6 +69,9 @@ class Plant: SKSpriteNode{
     var levelType: LevelType
     let plantType: PlantType
     var isReadyToHarvest: Bool
+    var isDead:Bool = false
+    var key:Int = 0;
+    
     
     init(plantType: PlantType, positionOnPath: Int) {
         self.positionOnPath = positionOnPath
@@ -77,6 +80,7 @@ class Plant: SKSpriteNode{
         self.levelType = LevelType.baby //Starts as a baby
         self.isReadyToHarvest = false //Starts not ready to harvest
         self.moodSprite = SKSpriteNode.init() //Place holder
+        
         
         let texture = SKTexture(imageNamed: "\(self.plantType)\(self.levelType.rawValue)")
         
@@ -88,7 +92,12 @@ class Plant: SKSpriteNode{
         self.moodSprite.zPosition = 3
         self.moodSprite.position.x = 0
         self.moodSprite.position.y = 0
+        self.zPosition = 2
+        
         self.addChild(moodSprite)
+        
+        starve = 3
+        decreaseStarve()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -96,17 +105,23 @@ class Plant: SKSpriteNode{
     }
     
     func defineFoodNeeding() {
-        defineMood(moodType: MoodType.neutral)
-        self.foodNeeding = FoodType.randomFoodType()
+        
+        if balloonSprite != nil {
+        
+            defineMood(moodType: MoodType.neutral)
+            self.foodNeeding = FoodType.randomFoodType()
 
-        if let type = foodNeeding{
-            //Automaticaly add a ballon when a new food need is setted
-            self.addingBalloon(type: type)
+            if let type = foodNeeding{
+                //Automaticaly add a ballon when a new food need is setted
+                
+                self.addingBalloon(type: type)
+            }
         }
 
     }
     
     func addingBalloon(type:FoodType) {
+        
         self.balloonSprite = Balloon(foodType: type)
         self.balloonSprite?.position.x = self.size.width/4
         self.balloonSprite?.position.y = self.size.height/4
@@ -177,6 +192,78 @@ class Plant: SKSpriteNode{
         
         //Destroy balloon
         self.balloonSprite?.removeFromParent()
+    }
+    
+    func checkIfIsInsight(food: Food) -> Bool {
+        
+        let diffx = abs(self.position.x - food.position.x)
+        let diffy = abs(self.position.y - food.position.y)
+        let diff = diffx + diffy
+        
+        return diff < 40
+    }
+    
+    
+    
+    
+    var growth:Int = 0 {
+        didSet{
+            if growth >= 3{
+                levelUp()
+                starve = 3
+                growth = 0
+            }
+        }
+    }
+    var starveDisposer:Disposable?
+    var starveDuration:Double = 5
+    var starve:Int = 3 {
+        didSet{
+            if starve < 0 {
+                self.isDead = true
+                self.runDeath()
+                return
+            }
+            
+            switch (starve){
+            case 0:
+                defineMood(moodType: .sad)
+                break
+            case 1:
+                defineMood(moodType: .neutral)
+                break
+            case 2:
+                defineMood(moodType: .neutral)
+                defineFoodNeeding()
+                break
+            case 3:
+                defineMood(moodType: .happy)
+                break
+            default:
+                break
+            }
+        }
+    }
+    
+    func eat(_ food:Food){
+        self.runEating()
+        
+        balloonSprite?.removeFromParent()
+        balloonSprite = nil
+        
+        starve = 3;
+        growth += 1
+        starveDisposer?.dispose()
+        decreaseStarve()
+    }
+    
+    func decreaseStarve(){
+        
+        starveDisposer = async(delay: starveDuration) {
+            self.starve -= 1
+            self.decreaseStarve()
+        }
+        
     }
 }
 

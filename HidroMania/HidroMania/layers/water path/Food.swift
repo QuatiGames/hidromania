@@ -49,6 +49,9 @@ class Food: SKSpriteNode {
         //print("Food log: \(imageName)")
         
         super.init(texture: texture, color: UIColor.clear, size: size)
+        
+        
+        self.zPosition = 4
     }
     
     //Init food to move on water path

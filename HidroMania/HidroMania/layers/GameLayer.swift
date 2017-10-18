@@ -95,6 +95,7 @@ class GameLayer:Layer{
     
     override func update(delta:Double){
         super.update(delta: delta)
+        waterPath.update(delta: delta)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
