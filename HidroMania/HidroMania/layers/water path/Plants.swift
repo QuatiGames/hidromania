@@ -83,7 +83,6 @@ class Plant: SKSpriteNode{
     /*Texture changing functions*/
     func defineTextureOnLevelAndPlantType(){
         let imageName = "\(self.plantType)\(self.levelType.rawValue)"
-//        print("Plant log: \(imageName)")
         self.texture = SKTexture(imageNamed: imageName)
         
         self.moodSprite.zPosition = 3
@@ -98,21 +97,26 @@ class Plant: SKSpriteNode{
     
     func levelUp(){
         self.levelType = LevelType.nextLevelTypeOf(levelType: self.levelType.rawValue)
-//        print("Plant log: \(self.levelType)")
         self.defineTextureOnLevelAndPlantType()
     }
     
     /* Behavior functions */
     func runIdleAction() {
-//        let bouncingMovement:SKAction = SKAction.sequence([SKAction.scale(to: CGSize(width: self.normalSize.width, height: self.normalSize.height), duration: 1),
-//                                                           SKAction.scale(to: CGSize(width: self.normalSize.width + 20, height: self.normalSize.height - 20), duration: 1)])
         let bouncingMovement = SKAction.sequence([SKAction.resize(toWidth: self.normalSize.width + 20, height: self.normalSize.height - 20, duration: 1),
                                           SKAction.resize(toWidth: self.normalSize.width, height: self.normalSize.height, duration: 1)])
         
         self.run(SKAction.repeatForever(bouncingMovement))
     }
     
-    
+    func runDeath() {
+        let dieAnimation = SKAction.sequence([SKAction.run {
+                                                self.defineMood(moodType: MoodType.sad)
+                                                },
+                                              SKAction.colorize(with: UIColor.darkGray, colorBlendFactor: 1, duration: 1),
+                                              SKAction.resize(toWidth: self.normalSize.width + 20, height: self.normalSize.height - 40, duration: 1),
+                                              SKAction.fadeOut(withDuration: 0.5)])
+        self.run(dieAnimation)
+    }
 }
 
 
