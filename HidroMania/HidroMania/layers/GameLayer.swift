@@ -22,17 +22,17 @@ class GameLayer:Layer{
         
         hud = HudLayer(size: hudSize)
         hud.position.x = 0
-        hud.position.y = size.height
+        hud.position.y = size.height - hud.size.height
         hud.zPosition = 2
         
         foodBar = FoodBarLayer(size: foodBarSize)
         foodBar.position.x = hudSize.width
-        foodBar.position.y = size.height
+        foodBar.position.y = 0
         foodBar.zPosition = 1
         
         waterPath = WaterPathLayer(size: waterPathSize)
         waterPath.position.x = 0
-        waterPath.position.y = size.height
+        waterPath.position.y = 0
         waterPath.zPosition = 0
         
         super.init(size: size)
