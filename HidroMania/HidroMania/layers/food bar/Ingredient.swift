@@ -26,19 +26,31 @@ struct IngredientData{
     }
 }
 
+enum IngredientType: Int{
+    case unknow = 0, N, Mg, S, K, P
+}
+
 
 class Ingredient:SKSpriteNode {
     
-    var type:String = ""
+    var data:IngredientData
     
+    init(color: UIColor, size: CGSize, data: IngredientData) {
+        self.data = data
+        let texture = SKTexture(imageNamed: data.type)
+        
+        super.init(texture: texture, color: color, size: size)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     func newCopy() -> Ingredient{
         
-        let ingredient = Ingredient(color: self.color, size: self.size)
+        let ingredient = Ingredient(color: self.color, size: self.size, data: self.data)
         ingredient.position = self.position
         ingredient.texture = self.texture
-        
-        ingredient.type = self.type
         
         //Add same parent
         self.parent?.addChild(ingredient)

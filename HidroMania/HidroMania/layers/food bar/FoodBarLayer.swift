@@ -63,8 +63,9 @@ class FoodBarLayer:Layer {
         let space:CGFloat = self.size.width*0.15
         
         for (i,ing) in player.allIngredients.enumerated() {
-            let food = Ingredient(color: UIColor.lightGray, size: CGSize(width: ratio, height: ratio) )
-            food.type = ing.type
+//            let food = Ingredient(color: UIColor.lightGray, size: CGSize(width: ratio, height: ratio) )
+            let food = Ingredient(color: UIColor.clear, size: CGSize(width: ratio, height: ratio), data: ing)
+//            food.type = ing.type
             food.anchorPoint = CGPoint(x: 0.5, y:1.0)
             
             food.position.y = (ratio + space) * CGFloat(i) + ratio*2
@@ -75,7 +76,7 @@ class FoodBarLayer:Layer {
             badge.position.y = 0
             food.addChild(badge)
             
-            badge.watchingKey = food.type
+            badge.watchingKey = food.data.type
             badge.update()
             
             foodArray.append(food)
@@ -144,7 +145,7 @@ class FoodBarLayer:Layer {
             print("Adding ingredient")
             
             print("Decreasing number of ingredients")
-            player.change(ingredientType: ingredient.type, value: -1)
+            player.change(ingredientType: ingredient.data.type, value: -1)
         }
     }
     
@@ -157,7 +158,7 @@ class FoodBarLayer:Layer {
         if let ingredient:Ingredient = node as? Ingredient{
             
             // check ingredient amout
-            if let amount = player.getValue(of: ingredient.type){
+            if let amount = player.getValue(of: ingredient.data.type){
                 
                 if amount > 0 {
             
