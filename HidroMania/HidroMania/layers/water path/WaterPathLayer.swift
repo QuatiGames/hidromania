@@ -13,6 +13,20 @@ class WaterPathLayer:Layer {
     var pathPosition = [Int:CGPoint]()
     var pathDict = [Int:Plant?]()
     var timeBettweenSpawns:Double = 2
+    var foods = NSMutableArray()
+    
+    
+    
+    //Don't know if it is necessary
+    override init(size: CGSize) {
+        super.init(size: size)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
     
     override func didMove() {
         self.color = UIColor.blue
@@ -27,21 +41,38 @@ class WaterPathLayer:Layer {
         //Testing foods
 //        self.addFood(foodType: FoodType.N)
         
-        //Testing plants
-        self.addPlant(plantType: PlantType.cabbage)
+        async(delay: 2) {
+            self.addFood(foodType: .N)
+        }
+        
+        addFood(foodType: .N)
         
     }
     
-    //Don't know if it is necessary
-    override init(size: CGSize) {
-        
-        
-        super.init(size: size)
+    
+    override func update(delta: Double) {
+        for f in foods {
+            
+            let f = f as! Food
+            
+            for (_, plant) in pathDict{
+                
+                if let p = plant {
+                    
+                    if p.checkIfIsInsight(food: f){
+                        if f.foodType == p.foodNeeding {
+                            f.removeFromParent()
+                            foods.remove(f)
+                            print("eating food...")
+                            p.eat(f)
+                        }
+                    }
+                }
+            }
+            
+        }
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     func addFood(foodType: FoodType){
         let food = Food(size: CGSize(width: 50, height: 50), foodType: foodType, duration: 2) //Change duration value depending on the player value
@@ -51,20 +82,16 @@ class WaterPathLayer:Layer {
         food.position.y = 43
         
         self.addChild(food)
+        foods.add(food)
         food.runMovement()
     }
     
-    func addPlant(plantType: PlantType) {
+    func addPlant(plantType: PlantType, position:CGPoint) -> Plant {
         let plant = Plant(plantType: plantType, positionOnPath: 1)
-        
-        plant.position.x = 88
-        plant.position.y = 109
-        
+        plant.position = position
         self.addChild(plant)
         
-        
         plant.runIdleAction()
-        
         plant.defineFoodNeeding()
         
         let action = SKAction.sequence([SKAction.wait(forDuration: 3),
@@ -77,6 +104,8 @@ class WaterPathLayer:Layer {
             }])
         
         self.run(action)
+        
+        return plant
     }
     
     func configurePoints(){
@@ -100,10 +129,18 @@ class WaterPathLayer:Layer {
     
     func createPlant(){
         
-        print("new plant")
+        let index = Int(UInt32(9).random(1))
         
-        async(delay: timeBettweenSpawns) {
+        if(pathDict[index] == nil){
+            if let pos = pathPosition[index]{
+                let plant = addPlant(plantType: PlantType.randomPlantType(), position: pos)
+                pathDict[index] = plant
+            }
+        }
+        
+        let _ = async(delay: timeBettweenSpawns) {
             self.createPlant()
         }
     }
+
 }

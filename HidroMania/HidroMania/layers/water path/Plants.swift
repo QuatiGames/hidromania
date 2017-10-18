@@ -70,6 +70,8 @@ class Plant: SKSpriteNode{
     let plantType: PlantType
     var isReadyToHarvest: Bool
     
+    
+    
     init(plantType: PlantType, positionOnPath: Int) {
         self.positionOnPath = positionOnPath
         self.plantType = plantType
@@ -77,6 +79,7 @@ class Plant: SKSpriteNode{
         self.levelType = LevelType.baby //Starts as a baby
         self.isReadyToHarvest = false //Starts not ready to harvest
         self.moodSprite = SKSpriteNode.init() //Place holder
+        
         
         let texture = SKTexture(imageNamed: "\(self.plantType)\(self.levelType.rawValue)")
         
@@ -88,7 +91,12 @@ class Plant: SKSpriteNode{
         self.moodSprite.zPosition = 3
         self.moodSprite.position.x = 0
         self.moodSprite.position.y = 0
+        self.zPosition = 2
+        
         self.addChild(moodSprite)
+        
+        starve = 3
+        decreaseStarve()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -175,6 +183,74 @@ class Plant: SKSpriteNode{
         
         //Destroy balloon
         self.balloonSprite?.removeFromParent()
+    }
+    
+    func checkIfIsInsight(food: Food) -> Bool {
+        
+        let diffx = abs(self.position.x - food.position.x)
+        let diffy = abs(self.position.y - food.position.y)
+        let diff = diffx + diffy
+        
+        return diff < 40
+    }
+    
+    
+    
+    
+    
+    
+    var growth:Int = 0 {
+        didSet{
+            if growth >= 3{
+                levelUp()
+                starve = 3
+                growth = 0
+            }
+        }
+    }
+    var starveDisposer:Disposable?
+    var starveDuration:Double = 5
+    var starve:Int = 0 {
+        didSet{
+            if starve < 0 {
+                self.runDeath()
+                return
+            }
+            
+            switch (starve){
+            case 0:
+                defineMood(moodType: .sad)
+                break
+            case 1:
+                defineMood(moodType: .neutral)
+                break
+            case 2:
+                defineMood(moodType: .neutral)
+                break
+            case 3:
+                defineMood(moodType: .happy)
+                break
+            default:
+                break
+            }
+        }
+    }
+    
+    func eat(_ food:Food){
+        self.runEating()
+        starve = 3;
+        growth += 1
+        starveDisposer?.dispose()
+        decreaseStarve()
+    }
+    
+    func decreaseStarve(){
+        
+        starveDisposer = async(delay: starveDuration) {
+            self.starve -= 1
+            self.decreaseStarve()
+        }
+        
     }
 }
 
