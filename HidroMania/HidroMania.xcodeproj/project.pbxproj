@@ -443,6 +443,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = QG.HidroMania;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"SWIFT_OPTIMIZATION_LEVEL[arch=*]" = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;

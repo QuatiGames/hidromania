@@ -59,8 +59,8 @@ class FoodBarLayer:Layer {
     
     func setupFoods(){
         
-        let ratio = self.size.width*0.4
-        let space:CGFloat = self.size.width*0.15
+        let ratio = self.size.width*0.5
+        let space:CGFloat = self.size.width*0.05
         
         for (i,ing) in player.allIngredients.enumerated() {
 //            let food = Ingredient(color: UIColor.lightGray, size: CGSize(width: ratio, height: ratio) )
@@ -141,7 +141,7 @@ class FoodBarLayer:Layer {
     
     func releaseIngredientOnTable(){
         if let ingredient = selectedObject as? Ingredient {
-            bench.ingredients.append(ingredient)
+            bench.add(ingredient: ingredient)
             print("Adding ingredient")
             
             print("Decreasing number of ingredients")

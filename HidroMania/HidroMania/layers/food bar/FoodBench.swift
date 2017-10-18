@@ -12,6 +12,12 @@ import SpriteKit
 class FoodBench:SKSpriteNode {
     
     var ingredients = Array<Ingredient>()
+    var food:Food?
     
+    func add(ingredient: Ingredient){
+        self.ingredients.append(ingredient)
+        
+        
+    }
 }
 

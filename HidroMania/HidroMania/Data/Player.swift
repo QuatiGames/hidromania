@@ -114,3 +114,52 @@ extension Player{
         }
     }
 }
+
+
+
+
+
+//Util
+
+protocol Disposable {
+    func dispose()
+}
+
+fileprivate class Disposer:NSObject, Disposable{
+    
+    var isDisposed = false
+    
+    func dispose(){
+        isDisposed = true
+    }
+}
+
+//Global Funcs
+func async(delay:Double = 0,_ block: @escaping () -> () ) -> Disposable{
+    
+    if(delay < 0){
+        block()
+    }
+    
+    let disp = Disposer()
+    
+    DispatchQueue.main.asyncAfter(deadline: .now() + delay , execute: {() in
+        if disp.isDisposed == false{
+            block()
+        }
+    })
+    
+    return disp
+}
+
+//Double Extension
+
+public extension UInt32 {
+    func random() -> UInt32 {
+        return arc4random() % self
+    }
+    
+    func random(_ low:UInt32) -> UInt32 {
+        return arc4random() % (self - low) + low
+    }
+}

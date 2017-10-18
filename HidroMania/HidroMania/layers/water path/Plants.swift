@@ -65,7 +65,7 @@ class Plant: SKSpriteNode{
     var moodType:MoodType
     var moodSprite:SKSpriteNode
     var balloonSprite:Balloon?
-    var foodNeeding:PlantType?
+    var foodNeeding:FoodType?
     var levelType: LevelType
     let plantType: PlantType
     var isReadyToHarvest: Bool
@@ -98,13 +98,16 @@ class Plant: SKSpriteNode{
     func defineFoodNeeding() {
         defineMood(moodType: MoodType.neutral)
         self.foodNeeding = FoodType.randomFoodType()
-        
-        //Automaticaly add a ballon when a new food need is setted
-        self.addingBalloon()
+
+        if let type = foodNeeding{
+            //Automaticaly add a ballon when a new food need is setted
+            self.addingBalloon(type: type)
+        }
+
     }
     
-    func addingBalloon() {
-        self.balloonSprite = Balloon(foodType: self.foodNeeding!)
+    func addingBalloon(type:FoodType) {
+        self.balloonSprite = Balloon(foodType: type)
         self.balloonSprite?.position.x = self.size.width/4
         self.balloonSprite?.position.y = self.size.height/4
         self.balloonSprite?.zPosition = 3
