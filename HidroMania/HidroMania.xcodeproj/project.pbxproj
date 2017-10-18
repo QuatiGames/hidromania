@@ -24,6 +24,7 @@
 		E9ECA6C11F96AE5900E9BA93 /* GameOverLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECA6C01F96AE5900E9BA93 /* GameOverLayer.swift */; };
 		E9ECA6C31F96AEB600E9BA93 /* MenuLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECA6C21F96AEB600E9BA93 /* MenuLayer.swift */; };
 		E9ECA6C51F96BCCE00E9BA93 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECA6C41F96BCCE00E9BA93 /* Ingredient.swift */; };
+		E9ECA6C71F96DC4700E9BA93 /* FoodBench.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECA6C61F96DC4700E9BA93 /* FoodBench.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		E9ECA6C01F96AE5900E9BA93 /* GameOverLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverLayer.swift; sourceTree = "<group>"; };
 		E9ECA6C21F96AEB600E9BA93 /* MenuLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuLayer.swift; sourceTree = "<group>"; };
 		E9ECA6C41F96BCCE00E9BA93 /* Ingredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
+		E9ECA6C61F96DC4700E9BA93 /* FoodBench.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodBench.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 			children = (
 				E9ECA6B81F96AE2500E9BA93 /* FoodBarLayer.swift */,
 				E9ECA6C41F96BCCE00E9BA93 /* Ingredient.swift */,
+				E9ECA6C61F96DC4700E9BA93 /* FoodBench.swift */,
 			);
 			path = "food bar";
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 				E9ECA6BD1F96AE4400E9BA93 /* WaterPathLayer.swift in Sources */,
 				E9ECA6B31F96A97F00E9BA93 /* Layer.swift in Sources */,
 				E9ECA69E1F96A40F00E9BA93 /* GameViewController.swift in Sources */,
+				E9ECA6C71F96DC4700E9BA93 /* FoodBench.swift in Sources */,
 				E9ECA6961F96A40E00E9BA93 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

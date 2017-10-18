@@ -61,19 +61,27 @@ class GameLayer:Layer{
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
+        foodBar.touchesBegan(touches, with: event)
+        hud.touchesBegan(touches, with: event)
+        waterPath.touchesBegan(touches, with: event)
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
+        foodBar.touchesMoved(touches, with: event)
+        hud.touchesMoved(touches, with: event)
+        waterPath.touchesMoved(touches, with: event)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
+        foodBar.touchesEnded(touches, with: event)
+        hud.touchesEnded(touches, with: event)
+        waterPath.touchesEnded(touches, with: event)
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
+        foodBar.touchesCancelled(touches, with: event)
+        hud.touchesCancelled(touches, with: event)
+        waterPath.touchesCancelled(touches, with: event)
     }
     
 }
