@@ -16,14 +16,18 @@ class FoodBarLayer:Layer {
     var selectedObject:SKNode? = nil
     var bench:FoodBench
     var tank:Reservoir
+    var trash:SKSpriteNode
     
     
     override init(size: CGSize) {
-        bench = FoodBench(color: UIColor.cyan.withAlphaComponent(0.3), size: CGSize(width: size.width, height: size.height*0.5) )
+        bench = FoodBench(color: UIColor.cyan.withAlphaComponent(0.3), size: CGSize(width: size.width, height: size.height*0.45) )
         bench.anchorPoint = CGPoint(x: 1.0, y: 0.5)
         
-        tank = Reservoir(color: UIColor.magenta.withAlphaComponent(0.3), size: CGSize(width: size.width*1.5, height: size.height*0.35))
+        tank = Reservoir(color: UIColor.magenta.withAlphaComponent(0.3), size: CGSize(width: size.width*1.5, height: size.height*0.25))
         tank.anchorPoint = CGPoint(x: 1.0, y:0.0)
+        
+        trash = SKSpriteNode(color: UIColor.red.withAlphaComponent(0.5), size: CGSize(width: size.width*0.5, height: size.height*0.15))
+        trash.anchorPoint = CGPoint(x: 1.0, y:1.0)
         
         super.init(size: size)
     }
@@ -36,13 +40,17 @@ class FoodBarLayer:Layer {
     override func didMove() {
         self.color = UIColor.yellow
         
-        bench.position.y = self.size.height*0.6
+        bench.position.y = self.size.height*0.5
         bench.position.x = 0
         self.addChild(bench)
         
         tank.position.y = 0
         tank.position.x = 0
         self.addChild(tank)
+        
+        trash.position.y = self.size.height*0.9
+        trash.position.x = 0
+        self.addChild(trash)
         
         
         setupFoods()
@@ -116,6 +124,10 @@ class FoodBarLayer:Layer {
                 if node == tank{
                     releaseFoodOnReservoir()
                 }
+                
+                if node == trash {
+                    dumpFood()
+                }
             }
         }
         
@@ -158,6 +170,11 @@ class FoodBarLayer:Layer {
                 }
             }
         }
+    }
+    
+    func dumpFood(){
+        print("dumb food")
+        bench.ingredients.removeAll()
     }
     
     func touchFood(_ node:SKNode){
