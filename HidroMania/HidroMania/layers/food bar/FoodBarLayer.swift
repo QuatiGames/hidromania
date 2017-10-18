@@ -36,11 +36,11 @@ class FoodBarLayer:Layer {
     override func didMove() {
         self.color = UIColor.yellow
         
-        bench.position.y = -self.size.height*0.4
+        bench.position.y = self.size.height*0.6
         bench.position.x = 0
         self.addChild(bench)
         
-        tank.position.y = -self.size.height
+        tank.position.y = 0
         tank.position.x = 0
         self.addChild(tank)
         
@@ -56,9 +56,10 @@ class FoodBarLayer:Layer {
         
         for i in 1...maxIngredient {
             let food = Ingredient(color: UIColor.lightGray, size: CGSize(width: ratio, height: ratio) )
+            food.type = "type\(i)"
             food.anchorPoint = CGPoint(x: 0.5, y:1.0)
             
-            food.position.y = -(ratio + space) * CGFloat(i - 1) - ratio
+            food.position.y = (ratio + space) * CGFloat(i - 1) + ratio*2
             food.position.x = self.size.width*0.5
             
             let badge = Badge(radius: food.size.width/4)
@@ -66,7 +67,8 @@ class FoodBarLayer:Layer {
             badge.position.y = 0
             food.addChild(badge)
             
-            badge.number = 0
+            badge.watchingKey = food.type
+            badge.update()
             
             foodArray.append(food)
             self.addChild(food)
@@ -88,7 +90,6 @@ class FoodBarLayer:Layer {
 //                }
             }
         }
-        
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -99,7 +100,6 @@ class FoodBarLayer:Layer {
                 let location = t.location(in: self)
                 selectedObject?.position = location
             }
-            
         }
     }
     
@@ -132,6 +132,7 @@ class FoodBarLayer:Layer {
             print("Adding ingredient")
             
             print("Decreasing number of ingredients")
+            player.change(ingredientType: ingredient.type, value: -1)
         }
     }
     
@@ -140,14 +141,22 @@ class FoodBarLayer:Layer {
     }
     
     func touchIngredient(_ node:SKNode){
+        
         if let ingredient:Ingredient = node as? Ingredient{
             
-            if (selectedObject != nil){
-                //Remove other ingredient
-                selectedObject?.removeFromParent()
-            }
+            // check ingredient amout
+            if let amount = player.getValue(of: ingredient.type){
+                
+                if amount > 0 {
             
-            selectedObject = ingredient.newCopy()
+                    if (selectedObject != nil){
+                        //Remove other ingredient
+                        selectedObject?.removeFromParent()
+                    }
+                    
+                    selectedObject = ingredient.newCopy()
+                }
+            }
         }
     }
     

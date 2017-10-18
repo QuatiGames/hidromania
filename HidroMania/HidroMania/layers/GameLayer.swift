@@ -8,6 +8,10 @@
 
 import SpriteKit
 
+
+//Singleton For data access
+let player = Player()
+
 class GameLayer:Layer{
     
     var hud:HudLayer
@@ -16,21 +20,25 @@ class GameLayer:Layer{
 
 
     override init(size:CGSize){
+        
+        player.lifes = 3
+        player.money = 100
+        
         let foodBarSize =   CGSize(width: size.width/6, height: size.height)
         let hudSize =       CGSize(width: size.width - foodBarSize.width, height: size.height/12)
         let waterPathSize = CGSize(width: size.width - foodBarSize.width, height: size.height - hudSize.height)
         
         hud = HudLayer(size: hudSize)
         hud.position.x = 0
-        hud.position.y = size.height
+        hud.position.y = size.height - hud.size.height
         
         waterPath = WaterPathLayer(size: waterPathSize)
         waterPath.position.x = 0
-        waterPath.position.y = size.height - hudSize.height
+        waterPath.position.y = 0
         
         foodBar = FoodBarLayer(size: foodBarSize)
         foodBar.position.x = hudSize.width
-        foodBar.position.y = size.height
+        foodBar.position.y = 0
         
         super.init(size: size)
         

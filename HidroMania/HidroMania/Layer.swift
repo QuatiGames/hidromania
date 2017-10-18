@@ -15,7 +15,7 @@ class Layer:SKSpriteNode{
     
     init(size: CGSize){
         super.init(texture: nil, color: UIColor.clear, size: size)
-        self.anchorPoint = CGPoint(x: 0.0, y: 1.0)
+        self.anchorPoint = CGPoint(x: 0.0, y: 0.0)
 
     }
     
