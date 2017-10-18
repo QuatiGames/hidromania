@@ -8,6 +8,21 @@
 
 import SpriteKit
 
+struct IngredientData{
+    var name:String
+    var type:String //mudar enum
+    var price:Int
+    var description:String
+    
+    init(n:String, t:String, p:Int, d:String){
+        self.name = n
+        self.type = t
+        self.price = p
+        self.description = d
+    }
+}
+
+
 class Ingredient:SKSpriteNode {
     
     var type:String = ""

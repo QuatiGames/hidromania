@@ -26,8 +26,8 @@ class Player {
             updateObservers()
         }
     }
-    private var ingredients = Dictionary<String,Int>()
-    private var observers = Array<PlayerObserver>()
+    fileprivate var ingredients = Dictionary<String,Int>()
+    fileprivate var observers = Array<PlayerObserver>()
     
     
     
@@ -37,6 +37,31 @@ class Player {
         }
     }
     
+    
+    
+    
+    let allIngredients:Array<IngredientData> = [
+        IngredientData(n: "Potássio", t: "K", p: 100, d: "Elemento radioativo extremamente volátil"),
+        IngredientData(n: "Magnésio", t: "Mg", p: 200, d: "Elemento radioativo extremamente volátil"),
+        IngredientData(n: "Enxofre", t: "S", p: 300, d: "Elemento radioativo extremamente volátil"),
+        IngredientData(n: "Fósforo", t: "P", p: 400, d: "Elemento radioativo extremamente volátil"),
+        IngredientData(n: "Nitrogênio", t: "N", p: 500, d: "Elemento radioativo extremamente volátil")
+        ]
+    
+    let settings:Array<String> = ["Music", "Effects"]
+    
+    
+//    let allEnhancements = []
+    
+//    var enhancementsBought = []
+    
+}
+
+
+
+
+// Observer
+extension Player{
     // Add observer
     func addObserver(obs:PlayerObserver) -> Int{
         observers.append(obs)
@@ -79,10 +104,9 @@ class Player {
     }
     
     // update all observers
-    private func updateObservers(){
+    fileprivate func updateObservers(){
         for obs in observers{
             obs.update()
         }
     }
-    
 }
