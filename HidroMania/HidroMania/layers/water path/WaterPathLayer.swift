@@ -73,11 +73,16 @@ class WaterPathLayer:Layer {
     }
     
     private var  aux = Array<Int>()
+    private var  aux2 = Array<Food>()
     
     override func update(delta: Double) {
         for f in foods {
             
             let f = f as! Food
+            
+            if f.isDead {
+                aux2.append(f)
+            }
             
             for (_, plant) in pathDict{
                 
@@ -110,6 +115,11 @@ class WaterPathLayer:Layer {
         for k in aux {
             pathDict[k] = nil
         }
+        
+        for f in aux2 {
+            foods.remove(f)
+        }
+        
     }
     
     

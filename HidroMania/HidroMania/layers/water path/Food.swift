@@ -38,6 +38,7 @@ class Food: SKSpriteNode {
 //    var moveOnWaterPath: SKAction? //Only for the food that move on path
     var bubble: SKSpriteNode? //Only for the food that move on path
     var duration: TimeInterval = 0 //Only for the food that move on path
+    var isDead = false
     
     //Init with FoodType
     init(size: CGSize, foodType: FoodType) {
@@ -52,6 +53,11 @@ class Food: SKSpriteNode {
         
         
         self.zPosition = 4
+        
+        async(delay: 60) {
+            self.removeFromParent()
+            self.isDead = true
+        }
     }
     
     //Init food to move on water path
