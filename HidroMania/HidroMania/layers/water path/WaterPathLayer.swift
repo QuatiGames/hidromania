@@ -20,18 +20,9 @@ class WaterPathLayer:Layer {
         
         //Testing foods
 //        self.addFood(foodType: FoodType.N)
-//
-//        self.run(SKAction.sequence([SKAction.wait(forDuration: 1),
-//                                    SKAction.run {
-//            self.addFood(foodType: FoodType.N)
-//            },
-//                                    SKAction.wait(forDuration: 1),
-//                                    SKAction.run {
-//            self.addFood(foodType: FoodType.N)
-//            }]))
         
-        //Testing plant
-        self.addPlant(plantType: PlantType.parsley)
+        //Testing plants
+        self.addPlant(plantType: PlantType.cabbage)
         
     }
     
@@ -64,6 +55,21 @@ class WaterPathLayer:Layer {
         plant.position.y = 109
         
         self.addChild(plant)
+        
+        
         plant.runIdleAction()
+        
+        plant.defineFoodNeeding()
+        
+        let action = SKAction.sequence([SKAction.wait(forDuration: 3),
+                                        SKAction.run {
+                                            plant.runEating()
+            },
+                                        SKAction.wait(forDuration: 5),
+                                        SKAction.run {
+                                            plant.defineFoodNeeding()
+            }])
+        
+        self.run(action)
     }
 }

@@ -12,9 +12,12 @@ class Balloon: SKSpriteNode{
     let foodType: FoodType
     var foodImage: SKSpriteNode?
     
-    init(texture: SKTexture?, color: UIColor, size: CGSize, foodType: FoodType) {
+    init(foodType: FoodType) {
         self.foodType = foodType
         self.foodImage = Food(size: CGSize(width: 20, height: 20), foodType: foodType)
+        let size = CGSize.init(width: 50, height: 50)
+        let color = UIColor.clear
+        let texture = SKTexture(imageNamed: "balloon")
         super.init(texture: texture, color: color, size: size)
     }
     

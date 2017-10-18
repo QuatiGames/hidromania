@@ -46,6 +46,7 @@ class Plant: SKSpriteNode{
     var positionOnPath: Int
     var moodType:MoodType
     var moodSprite:SKSpriteNode
+    var balloonSprite:Balloon?
     var foodNeeding:FoodType?
     var levelType: LevelType
     let plantType: PlantType
@@ -78,6 +79,18 @@ class Plant: SKSpriteNode{
     
     func defineFoodNeeding() {
         self.foodNeeding = FoodType.randomFoodType()
+        
+        //Automaticaly add a ballon when a new food need is setted
+        self.addingBalloon()
+    }
+    
+    func addingBalloon() {
+        self.balloonSprite = Balloon(foodType: self.foodNeeding!)
+        self.balloonSprite?.position.x = self.size.width/4
+        self.balloonSprite?.position.y = self.size.height/4
+        self.balloonSprite?.zPosition = 3
+        
+        self.addChild(self.balloonSprite!)
     }
     
     /*Texture changing functions*/
@@ -134,6 +147,9 @@ class Plant: SKSpriteNode{
                                         self.runIdleAction()
             }])
         self.run(eatAnimation)
+        
+        //Destroy balloon
+        self.balloonSprite?.removeFromParent()
     }
 }
 
