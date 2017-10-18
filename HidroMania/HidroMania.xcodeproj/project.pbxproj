@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		A0761C9E1F96BB8600C9A25C /* Plants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0761C9D1F96BB8600C9A25C /* Plants.swift */; };
 		A0761CA01F96C6C800C9A25C /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0761C9F1F96C6C800C9A25C /* Food.swift */; };
-		A0761CA21F96D93C00C9A25C /* FaceEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0761CA11F96D93C00C9A25C /* FaceEnum.swift */; };
 		A0761CA41F96E43800C9A25C /* Balloon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0761CA31F96E43800C9A25C /* Balloon.swift */; };
 		E9ECA6961F96A40E00E9BA93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECA6951F96A40E00E9BA93 /* AppDelegate.swift */; };
 		E9ECA6981F96A40E00E9BA93 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = E9ECA6971F96A40E00E9BA93 /* GameScene.sks */; };
@@ -32,7 +31,6 @@
 /* Begin PBXFileReference section */
 		A0761C9D1F96BB8600C9A25C /* Plants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plants.swift; sourceTree = "<group>"; };
 		A0761C9F1F96C6C800C9A25C /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
-		A0761CA11F96D93C00C9A25C /* FaceEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceEnum.swift; sourceTree = "<group>"; };
 		A0761CA31F96E43800C9A25C /* Balloon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Balloon.swift; sourceTree = "<group>"; };
 		E9ECA6921F96A40E00E9BA93 /* HidroMania.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HidroMania.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9ECA6951F96A40E00E9BA93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -143,7 +141,6 @@
 				E9ECA6BC1F96AE4400E9BA93 /* WaterPathLayer.swift */,
 				A0761C9D1F96BB8600C9A25C /* Plants.swift */,
 				A0761C9F1F96C6C800C9A25C /* Food.swift */,
-				A0761CA11F96D93C00C9A25C /* FaceEnum.swift */,
 				A0761CA31F96E43800C9A25C /* Balloon.swift */,
 			);
 			path = "water path";
@@ -254,7 +251,6 @@
 				E9ECA6B31F96A97F00E9BA93 /* Layer.swift in Sources */,
 				E9ECA69E1F96A40F00E9BA93 /* GameViewController.swift in Sources */,
 				E9ECA6961F96A40E00E9BA93 /* AppDelegate.swift in Sources */,
-				A0761CA21F96D93C00C9A25C /* FaceEnum.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

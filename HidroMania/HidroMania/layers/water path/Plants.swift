@@ -12,16 +12,27 @@ enum PlantType: Int{
     case unknown = 0, lettuce, cabbage, chive, parsley
 }
 
+enum LevelType: Int{
+    case unknown = 0, baby, middle, adult
+}
+
+enum MoodType: Int{
+    case unknown = 0, sad, neutral, happy
+}
+
 class Plant: SKSpriteNode{
     
     var positionOnPath: Int
-    var face:FaceEnum?
+    var moodType:MoodType
     var foodNeeding:FoodType?
+    var levelType: LevelType
     let plantType: PlantType
     
     init(texture: SKTexture?, color: UIColor, size: CGSize, positionOnPath: Int, plantType: PlantType) {
         self.positionOnPath = positionOnPath
         self.plantType = plantType
+        self.moodType = MoodType.happy //Starts whith a happy mood
+        self.levelType = LevelType.baby //Starts as a baby
         
         super.init(texture: texture, color: color, size: size)
     }

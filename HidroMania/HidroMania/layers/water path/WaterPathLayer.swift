@@ -17,15 +17,13 @@ class WaterPathLayer:Layer {
         
         self.texture = SKTexture(imageNamed: "background")
         
-        //test food
-        let foodtest = Food(size: CGSize(width: 50, height: 50), foodType: FoodType.N, duration: 2)
-        foodtest.position.x = 436
-        foodtest.position.y = 43
-        self.addChild(foodtest)
-        
-        foodtest.runMovement()
-        
-        
+//        //test food
+//        let foodtest = Food(size: CGSize(width: 50, height: 50), foodType: FoodType.N, duration: 2)
+//        foodtest.position.x = 436
+//        foodtest.position.y = 43
+//        self.addChild(foodtest)
+//        
+//        foodtest.runMovement()
     }
     
     //Don't know if it is necessary
