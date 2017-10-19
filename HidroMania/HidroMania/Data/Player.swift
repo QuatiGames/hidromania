@@ -16,7 +16,7 @@ protocol PlayerObserver{
 class Player {
     
     // Variables
-    var money:UInt = 0 {
+    var money:Double = 0 {
         didSet{
             updateObservers()
         }
@@ -40,11 +40,11 @@ class Player {
     
     
     let allIngredients:Array<IngredientData> = [
-        IngredientData(n: "Potássio", t: "K", p: 100, d: "Elemento radioativo extremamente volátil"),
-        IngredientData(n: "Magnésio", t: "Mg", p: 200, d: "Elemento radioativo extremamente volátil"),
-        IngredientData(n: "Enxofre", t: "S", p: 300, d: "Elemento radioativo extremamente volátil"),
-        IngredientData(n: "Fósforo", t: "P", p: 400, d: "Elemento radioativo extremamente volátil"),
-        IngredientData(n: "Nitrogênio", t: "N", p: 500, d: "Elemento radioativo extremamente volátil")
+        IngredientData(n: "Potássio", t: "K", p: 10, d: "Elemento radioativo extremamente volátil"),
+        IngredientData(n: "Magnésio", t: "Mg", p: 20, d: "Elemento radioativo extremamente volátil"),
+        IngredientData(n: "Enxofre", t: "S", p: 20, d: "Elemento radioativo extremamente volátil"),
+        IngredientData(n: "Fósforo", t: "P", p: 20, d: "Elemento radioativo extremamente volátil"),
+        IngredientData(n: "Nitrogênio", t: "N", p: 10, d: "Elemento radioativo extremamente volátil")
         ]
     
     let settings:Array<String> = ["Music", "Effects"]

@@ -100,6 +100,12 @@ class Plant: SKSpriteNode{
         
         starve = 4
         decreaseStarve()
+        
+        let _ = async(delay: 120) {
+            self.removeFromParent()
+            self.starveDisposer?.dispose()
+            self.isDead = true
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -211,7 +217,7 @@ class Plant: SKSpriteNode{
     var harverst = 0;
     var growth:Int = 0 {
         didSet{
-            if growth >= 3{
+            if growth >= 1{
                 levelUp()
                 starve = 3
                 growth = 0

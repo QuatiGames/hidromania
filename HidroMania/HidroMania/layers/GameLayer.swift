@@ -51,7 +51,7 @@ class GameLayer:Layer{
         market = MarketLayer(size: CGSize(width: size.width/2, height: size.height/2 ))
         market.position.x = size.width/2 - market.size.width/2
         market.position.y = size.height/2 - market.size.height/2
-        market.zPosition = 2
+        market.zPosition = 10
         
         super.init(size: size)
         
@@ -85,13 +85,27 @@ class GameLayer:Layer{
     }
     
     override func didMove() {
+        self.addChild(market)
+        market.alpha = 0.0
+        hud.gameLayer = self
         //displayMarket()
     }
     
+    var toggle = false
+    
     func displayMarket(){
-        backgroundShadow.run(appearAction)
-        self.addChild(market)
-        market.didMove()
+        
+        toggle = !toggle
+        
+        if (toggle) {
+            backgroundShadow.run(appearAction)
+            market.alpha = 1.0
+            market.didMove()
+        }else{
+            market.alpha = 0.0
+            backgroundShadow.alpha = 0.0
+            market.table?.removeFromSuperview()
+        }
     }
     
     
@@ -105,6 +119,12 @@ class GameLayer:Layer{
         hud.touchesBegan(touches, with: event)
         waterPath.touchesBegan(touches, with: event)
         market.touchesBegan(touches, with: event)
+        
+        if let location  = touches.first?.location(in: self){
+            if location.y > 330  && location.x < 200{
+                displayMarket()
+            }
+        }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {

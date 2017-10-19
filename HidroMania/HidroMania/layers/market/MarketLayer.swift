@@ -21,6 +21,17 @@ class MarketLayer:Layer {
     var enhancementTab = SKSpriteNode(color: UIColor.green.withAlphaComponent(0.8), size: CGSize.zero)
     var settingsTab = SKSpriteNode(color: UIColor.brown.withAlphaComponent(0.8), size: CGSize.zero)
     
+    override init(size: CGSize) {
+        super.init(size: size)
+        self.addChild(foodTab)
+        self.addChild(enhancementTab)
+        self.addChild(settingsTab)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     
     var table:UITableView?
     var currentTab = "" {
@@ -36,8 +47,6 @@ class MarketLayer:Layer {
             }
         }
     }
-    
-    
     
     
     override func didMove() {
@@ -62,10 +71,6 @@ class MarketLayer:Layer {
         enhancementTab.position.y = size.height
         settingsTab.position.y = size.height
         
-        
-        self.addChild(foodTab)
-        self.addChild(enhancementTab)
-        self.addChild(settingsTab)
         
         currentTab = "Comidas"
         

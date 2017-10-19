@@ -25,8 +25,12 @@ class TableViewFoodCell: GenericCell {
     
     @IBAction func buyButton(_ sender: Any) {
         if ingredient != nil {
-            print("buying \(ingredient?.type)...")
-            player.change(ingredientType: ingredient!.type, value: 1)
+            
+            if player.money >= ingredient!.getPrice(){
+                print("buying \(ingredient?.type ?? "" )...")
+                player.money -= ingredient!.getPrice()
+                player.change(ingredientType: ingredient!.type, value: 1)
+            }
         }
         
         if enhancement != nil {
@@ -58,6 +62,7 @@ class TableViewFoodCell: GenericCell {
         self.priceLabel.text = "$ \(ingredient.getPrice())"
         self.nameLabel.text = ingredient.name
         self.descriptionText.text = ingredient.description
+        self.ingredientImage.image = UIImage(named: "\(ingredient.type)")
     }
     
     func configureEnhancement(_ enhancement: Enhancement){

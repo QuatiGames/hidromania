@@ -18,7 +18,12 @@ class Balloon: SKSpriteNode{
         let size = CGSize.init(width: 50, height: 50)
         let color = UIColor.clear
         let texture = SKTexture(imageNamed: "balloon")
+        
         super.init(texture: texture, color: color, size: size)
+        
+        self.addChild(self.foodImage!)
+        
+        self.foodImage?.zPosition = 3
     }
     
     required init?(coder aDecoder: NSCoder) {

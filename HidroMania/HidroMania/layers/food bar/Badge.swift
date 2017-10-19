@@ -24,6 +24,7 @@ class Badge:SKNode{
             
             if number > 0{
                 
+                self.circle.fillColor = UIColor.white
                 label.text = String(number)
                 label.fontColor = UIColor.black
             }else{
