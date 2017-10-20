@@ -118,7 +118,10 @@ class GameLayer:Layer{
         foodBar.touchesBegan(touches, with: event)
         hud.touchesBegan(touches, with: event)
         waterPath.touchesBegan(touches, with: event)
-        market.touchesBegan(touches, with: event)
+        
+        if market.alpha > 0 {
+            market.touchesBegan(touches, with: event)
+        }
         
         if let location  = touches.first?.location(in: self){
             if location.y > 330  && location.x < 200{

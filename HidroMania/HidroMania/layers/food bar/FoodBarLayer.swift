@@ -72,7 +72,7 @@ class FoodBarLayer:Layer {
             let food = Ingredient(color: UIColor.clear, size: CGSize(width: ratio, height: ratio), data: ing)
             food.anchorPoint = CGPoint(x: 0.5, y:1.0)
             
-            food.position.y = (ratio + space) * CGFloat(i) + ratio*2
+            food.position.y = (ratio + space) * CGFloat(i) + ratio*1.2
             food.position.x = self.size.width*0.5
             
             let badge = Badge(radius: food.size.width/4)

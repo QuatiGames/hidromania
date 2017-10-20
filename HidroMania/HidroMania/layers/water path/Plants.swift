@@ -70,7 +70,7 @@ class Plant: SKSpriteNode{
     let plantType: PlantType
     var isReadyToHarvest: Bool
     var isDead:Bool = false
-    var key:Int = 0;
+    var harvested:Bool = false
     
     var eatAnimation:SKAction?
     
@@ -100,12 +100,6 @@ class Plant: SKSpriteNode{
         
         starve = 4
         decreaseStarve()
-        
-        let _ = async(delay: 120) {
-            self.removeFromParent()
-            self.starveDisposer?.dispose()
-            self.isDead = true
-        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -114,9 +108,14 @@ class Plant: SKSpriteNode{
     
     func defineFoodNeeding() {
         
+        if isReadyToHarvest {
+            return;
+        }
+        
+        
         if balloonSprite == nil {
         
-            defineMood(moodType: MoodType.neutral)
+            
             self.foodNeeding = FoodType.randomFoodType()
 
             if let type = foodNeeding{
@@ -160,7 +159,6 @@ class Plant: SKSpriteNode{
     
     /* Behavior functions */
     func runIdleAction() {
-        self.defineMood(moodType: MoodType.happy)
         self.removeAllActions()
         
         let bouncingMovement = SKAction.sequence([SKAction.resize(toWidth: self.normalSize.width + 20, height: self.normalSize.height - 20, duration: 1),
@@ -182,7 +180,10 @@ class Plant: SKSpriteNode{
                                               SKAction.run {
                                                 self.removeFromParent()
             }])
-        self.run(dieAnimation)
+        
+        self.run(dieAnimation) {
+            self.isDead = true
+        }
     }
     
     func runEating() {
@@ -212,14 +213,11 @@ class Plant: SKSpriteNode{
     }
     
     
-    
-    
-    var harverst = 0;
-    var growth:Int = 0 {
+    private var harverst = 0;
+    private var growth:Int = 0 {
         didSet{
             if growth >= 1{
                 levelUp()
-                starve = 3
                 growth = 0
                 
                 harverst += 1
@@ -227,36 +225,45 @@ class Plant: SKSpriteNode{
                 if harverst == 3 {
                     self.run(SKAction.repeatForever(eatAnimation!))
                     isReadyToHarvest = true
+                    starveDisposer?.dispose()
                 }
             }
         }
     }
     
-    var starveDisposer:Disposable?
-    var starveDuration:Double = 6
-    var starve:Int = 4 {
+    private var starveDisposer:Disposable?
+    private var starveDuration:Double = 6
+    private var maxStarve = 4
+    private var dying = false
+    
+    private var starve:Int = 4 {
         didSet{
             if starve < 0 {
-                self.isDead = true
+                self.dying = true
                 self.runDeath()
                 return
             }
             
             switch (starve){
             case 0:
+                //print("Dying T_T")
                 defineMood(moodType: .sad)
                 break
             case 1:
+                //print("Hungry :(")
                 defineMood(moodType: .neutral)
                 break
             case 2:
+                //print("Hungry :|")
                 defineMood(moodType: .neutral)
-                defineFoodNeeding()
                 break
             case 3:
+                //print("Hungry :D")
                 defineMood(moodType: .happy)
+                defineFoodNeeding()
                 break
             case 4:
+                //print("Belly full")
                 defineMood(moodType: .happy)
                 break
             default:
@@ -266,38 +273,32 @@ class Plant: SKSpriteNode{
     }
     
     func eat(_ food:Food){
-        self.runEating()
         
-        balloonSprite?.removeFromParent()
-        balloonSprite = nil
         
-        starve = 3;
-        growth += 1
-        starveDisposer?.dispose()
-        decreaseStarve()
+        if (dying == false){ // eat only if not dying
+        
+            self.runEating()
+            
+            balloonSprite?.removeFromParent()
+            balloonSprite = nil
+            
+            starve = maxStarve;
+            growth += 1
+            
+            starveDisposer?.dispose()
+            decreaseStarve()
+        }
     }
     
     func decreaseStarve(){
         
-        starveDisposer = async(delay: starveDuration) {
-            self.starve -= 1
-            self.decreaseStarve()
+        if !isReadyToHarvest { // After harverst state Plant do not suffer anymore
+            starveDisposer = async(delay: starveDuration) {
+                self.starve -= 1
+                self.decreaseStarve()
+            }
         }
         
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

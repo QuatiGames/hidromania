@@ -62,8 +62,6 @@ class Player {
 }
 
 
-
-
 // Observer
 extension Player{
     // Add observer

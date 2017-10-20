@@ -64,6 +64,8 @@ class Badge:SKNode{
         self.addChild(circle)
         self.addChild(label)
         
+        self.zPosition = 100
+        
         obsIndex = player.addObserver(obs: self)
     }
     

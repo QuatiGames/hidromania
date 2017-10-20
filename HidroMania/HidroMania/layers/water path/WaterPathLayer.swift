@@ -10,8 +10,10 @@ import SpriteKit
 
 class WaterPathLayer:Layer {
     
-    var pathPosition = [Int:CGPoint]()
-    var pathDict = [Int:Plant?]()
+//    var pathPosition = [Int:CGPoint]()
+    
+    var holes = Array<PlantHole>()
+    
     var timeBettweenSpawns:Double = 8
     var foods = NSMutableArray()
     
@@ -46,6 +48,7 @@ class WaterPathLayer:Layer {
                 if node is Plant{
                     if let p = node as? Plant {
                         if p.isReadyToHarvest {
+                            p.harvested = true
                             p.removeFromParent()
                             player.money += 100
                         }
@@ -55,48 +58,33 @@ class WaterPathLayer:Layer {
         }
     }
     
-    private var  aux = Array<Int>()
+    
+    //Food Destroy array
     private var  aux2 = Array<Food>()
     
     override func update(delta: Double) {
+        
+        for h in holes {
+            h.update()
+        }
+        
         for f in foods {
             
             let f = f as! Food
+            
+            //iterate holes
+            for h in holes {
+                //check food
+                if (h.checkPlant(f)){
+                    f.removeFromParent()
+                    aux2.append(f)
+                }
+            }
             
             if f.isDead {
                 aux2.append(f)
             }
             
-            for (_, plant) in pathDict{
-                
-                if let p = plant {
-                    
-                    if p.checkIfIsInsight(food: f){
-                        if f.foodType == p.foodNeeding {
-                            f.removeFromParent()
-                            foods.remove(f)
-                            print("eating food...")
-                            p.eat(f)
-                        }
-                    }
-                }
-            }
-            
-        }
-        
-        
-        //Cleaning
-        for (key, plant) in pathDict{
-            
-            if let p = plant {
-                if(p.isDead){
-                    aux.append(p.key)
-                }
-            }
-        }
-        
-        for k in aux {
-            pathDict[k] = nil
         }
         
         for f in aux2 {
@@ -118,9 +106,8 @@ class WaterPathLayer:Layer {
         food.runMovement()
     }
     
-    func addPlant(plantType: PlantType, position:CGPoint) -> Plant {
+    func addPlant(plantType: PlantType) -> Plant {
         let plant = Plant(plantType: plantType, positionOnPath: 1)
-        plant.position = position
         self.addChild(plant)
         
         plant.runIdleAction()
@@ -129,35 +116,28 @@ class WaterPathLayer:Layer {
     }
     
     func configurePoints(){
+
+        holes.append(PlantHole(314.0, 291.000030517578))
         
-        pathPosition = [
-            1:createPT(314.0, 291.000030517578),
-            2:createPT(204.999984741211, 289.500030517578),
-            3:createPT(92.5, 292.500030517578),
-            4:createPT(91.5, 196.500015258789),
-            5:createPT(201.5, 198.500015258789),
-            6:createPT(309.5, 197.000015258789),
-            7:createPT(92.0000152587891, 106.5),
-            8:createPT(200.999984741211, 109.0),
-            9:createPT(309.0, 107.500015258789)
-        ]
-    }
-    
-    func createPT(_ x:Double,_ y:Double) -> CGPoint{
-        return CGPoint(x: x, y: y)
+        holes.append(PlantHole(204.99, 289.5))
+        holes.append(PlantHole(92.5, 292.500030517578))
+        holes.append(PlantHole(91.5, 196.500015258789))
+        holes.append(PlantHole(201.5, 198.500015258789))
+        holes.append(PlantHole(309.5, 197.000015258789))
+        holes.append(PlantHole(92.0000152587891, 106.5))
+        holes.append(PlantHole(200.999984741211, 109.0))
+        holes.append(PlantHole(309.0, 107.500015258789))
     }
     
     func createPlant(){
         
         timeBettweenSpawns *=  0.95
         
-        let index = Int(UInt32(9).random(1))
-        
-        if(pathDict[index] == nil){
-            if let pos = pathPosition[index]{
-                let plant = addPlant(plantType: PlantType.randomPlantType(), position: pos)
-                pathDict[index] = plant
-                plant.key = index
+        if let h = holes.random(){
+            
+            if h.isEmpty() {
+                let plant = addPlant(plantType: PlantType.randomPlantType())
+                h.add(plant: plant)
             }
         }
         
@@ -166,4 +146,19 @@ class WaterPathLayer:Layer {
         }
     }
 
+}
+
+extension Array {
+    func random() -> Element?{
+        
+        if self.count <= 0 {
+            return nil
+        }
+        
+        let index = Int(UInt32(self.count).random())
+        
+        let obj = self[index]
+        
+        return obj
+    }
 }

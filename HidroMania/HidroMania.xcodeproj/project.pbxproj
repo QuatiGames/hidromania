@@ -37,6 +37,7 @@
 		E9ECA6C91F96E2FE00E9BA93 /* Reservoir.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECA6C81F96E2FE00E9BA93 /* Reservoir.swift */; };
 		E9ECA6CB1F96E8F900E9BA93 /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECA6CA1F96E8F900E9BA93 /* Badge.swift */; };
 		E9ECA6CE1F96F3F500E9BA93 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECA6CD1F96F3F500E9BA93 /* Player.swift */; };
+		E9F854FA1F9979A5004D556F /* PlantHole.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F854F91F9979A5004D556F /* PlantHole.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		E9ECA6C81F96E2FE00E9BA93 /* Reservoir.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reservoir.swift; sourceTree = "<group>"; };
 		E9ECA6CA1F96E8F900E9BA93 /* Badge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
 		E9ECA6CD1F96F3F500E9BA93 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		E9F854F91F9979A5004D556F /* PlantHole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantHole.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +184,7 @@
 				A0761C9D1F96BB8600C9A25C /* Plants.swift */,
 				A0761C9F1F96C6C800C9A25C /* Food.swift */,
 				A0761CA31F96E43800C9A25C /* Balloon.swift */,
+				E9F854F91F9979A5004D556F /* PlantHole.swift */,
 			);
 			path = "water path";
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 				E9ECA6C31F96AEB600E9BA93 /* MenuLayer.swift in Sources */,
 				E9ECA6BB1F96AE3800E9BA93 /* HudLayer.swift in Sources */,
 				A0761C9E1F96BB8600C9A25C /* Plants.swift in Sources */,
+				E9F854FA1F9979A5004D556F /* PlantHole.swift in Sources */,
 				E9ECA6C51F96BCCE00E9BA93 /* Ingredient.swift in Sources */,
 				E9ECA6B71F96ACCC00E9BA93 /* GameLayer.swift in Sources */,
 				A0761CA41F96E43800C9A25C /* Balloon.swift in Sources */,
