@@ -15,6 +15,7 @@
 		E902C0491F97355300977852 /* TableViewFoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E902C0451F97355300977852 /* TableViewFoodCell.swift */; };
 		E902C04B1F97365A00977852 /* FoodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E902C04A1F97365A00977852 /* FoodCell.xib */; };
 		E902C04F1F97367600977852 /* SettingsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E902C04E1F97367600977852 /* SettingsCell.xib */; };
+		E972CFE31F9D3173008AD01F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E972CFE21F9D3173008AD01F /* Utils.swift */; };
 		E9AFD8731F97511700E66A72 /* Enhancement.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AFD8721F97511700E66A72 /* Enhancement.swift */; };
 		E9ECA6961F96A40E00E9BA93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECA6951F96A40E00E9BA93 /* AppDelegate.swift */; };
 		E9ECA6981F96A40E00E9BA93 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = E9ECA6971F96A40E00E9BA93 /* GameScene.sks */; };
@@ -49,6 +50,7 @@
 		E902C0451F97355300977852 /* TableViewFoodCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewFoodCell.swift; sourceTree = "<group>"; };
 		E902C04A1F97365A00977852 /* FoodCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FoodCell.xib; sourceTree = "<group>"; };
 		E902C04E1F97367600977852 /* SettingsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsCell.xib; sourceTree = "<group>"; };
+		E972CFE21F9D3173008AD01F /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		E9AFD8721F97511700E66A72 /* Enhancement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enhancement.swift; sourceTree = "<group>"; };
 		E9ECA6921F96A40E00E9BA93 /* HidroMania.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HidroMania.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9ECA6951F96A40E00E9BA93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 			children = (
 				E9ECA6CD1F96F3F500E9BA93 /* Player.swift */,
 				E9AFD8721F97511700E66A72 /* Enhancement.swift */,
+				E972CFE21F9D3173008AD01F /* Utils.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				E9ECA6CB1F96E8F900E9BA93 /* Badge.swift in Sources */,
 				E9ECA6B91F96AE2500E9BA93 /* FoodBarLayer.swift in Sources */,
 				E9ECA6BF1F96AE4F00E9BA93 /* MarketLayer.swift in Sources */,
+				E972CFE31F9D3173008AD01F /* Utils.swift in Sources */,
 				E9ECA6CE1F96F3F500E9BA93 /* Player.swift in Sources */,
 				E902C0491F97355300977852 /* TableViewFoodCell.swift in Sources */,
 				E9ECA6C91F96E2FE00E9BA93 /* Reservoir.swift in Sources */,

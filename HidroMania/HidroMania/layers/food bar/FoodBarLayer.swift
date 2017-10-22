@@ -25,10 +25,9 @@ class FoodBarLayer:Layer {
         
         bench = FoodBench(color: UIColor.cyan.withAlphaComponent(0.0),
                           size: CGSize(width: size.width, height: size.height*0.45) )
+        bench.anchorPoint = CGPoint(x: 1.0, y: 0.0)
         
-        bench.anchorPoint = CGPoint(x: 1.0, y: 0.5)
-        
-        tank = Reservoir(color: UIColor.magenta.withAlphaComponent(0.0), size: CGSize(width: size.width*1.5, height: size.height*0.25))
+        tank = Reservoir(color: UIColor.magenta.withAlphaComponent(0.0), size: CGSize(width: size.width*1.5, height: size.height*0.35))
         tank.anchorPoint = CGPoint(x: 1.0, y:0.0)
         
         trash = SKSpriteNode(color: UIColor.red.withAlphaComponent(0.0), size: CGSize(width: size.width*0.5, height: size.height*0.15))
@@ -45,13 +44,13 @@ class FoodBarLayer:Layer {
     override func didMove() {
         self.color = UIColor.yellow
         
-        bench.position.y = self.size.height*0.5
-        bench.position.x = 0
-        self.addChild(bench)
-        
         tank.position.y = 0
         tank.position.x = 0
         self.addChild(tank)
+        
+        bench.position.y = tank.size.height
+        bench.position.x = 0
+        self.addChild(bench)
         
         trash.position.y = self.size.height*0.9
         trash.position.x = 0

@@ -164,7 +164,7 @@ class Plant: SKSpriteNode{
         let bouncingMovement = SKAction.sequence([SKAction.resize(toWidth: self.normalSize.width + 20, height: self.normalSize.height - 20, duration: 1),
                                                   SKAction.resize(toWidth: self.normalSize.width, height: self.normalSize.height, duration: 1)])
         
-        self.run(SKAction.repeatForever(bouncingMovement))
+        self.run(SKAction.repeatForever(bouncingMovement), withKey: "idle")
     }
     
     func runDeath() {
@@ -197,7 +197,8 @@ class Plant: SKSpriteNode{
                                      SKAction.run {
                                         self.runIdleAction()
             }])
-        self.run(eatAnimation!)
+        
+        self.run(eatAnimation!, withKey: "eat")
         
         //Destroy balloon
         self.balloonSprite?.removeFromParent()

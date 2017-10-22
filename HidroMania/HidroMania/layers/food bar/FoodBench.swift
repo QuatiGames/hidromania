@@ -25,7 +25,7 @@ class FoodBench:SKSpriteNode {
         let atualFoodType = self.getFoodTypefromIngredients()
         self.food = Food(size: CGSize.init(width: 50, height: 50) , foodType: atualFoodType)
         self.food?.zPosition = 1
-        self.food?.position = CGPoint(x: 0, y: 0)
+        self.food?.position = CGPoint(x: -self.size.width/2, y: self.size.height/2)
         
         self.addChild(self.food!)
     }

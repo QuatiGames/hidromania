@@ -28,7 +28,7 @@ class HudLayer:Layer {
         moneyLabel.position.x = 80
         moneyLabel.position.y = 20
         
-        player.addObserver(obs: moneyLabel)
+        let _ = player.addObserver(obs: moneyLabel)
         
         self.addChild(market)
         self.addChild(moneyLabel)
@@ -37,13 +37,24 @@ class HudLayer:Layer {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
     }
-    
 }
 
 
 
 class Money:SKLabelNode, PlayerObserver {
+    
+    var lastMoney:Double = player.money
+    
     func update(){
+        
+        if player.money > lastMoney {
+            self.runGainLabel(text: "+\(player.money - lastMoney)")
+            
+        }else if player.money < lastMoney {
+            self.runLoseLabel(text: "-\(lastMoney - player.money)")
+        }
+        
+        lastMoney = player.money
         self.text = "$ \(player.money)"
     }
     

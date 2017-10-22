@@ -22,6 +22,15 @@ class Badge:SKNode{
     var number:Int {
         didSet{
             
+            if (oldValue > number){
+                self.runLoseLabel(text: "-\(oldValue - number)")
+            }
+            
+            if (oldValue < number){
+                self.runGainLabel(text: "+\(number - oldValue)")
+                
+            }
+            
             if number > 0{
                 
                 self.circle.fillColor = UIColor.white
@@ -79,6 +88,7 @@ extension Badge:PlayerObserver {
     
     func update(){
         if let value = player.getValue(of: watchingKey){
+            
             self.number = value
         }
     }

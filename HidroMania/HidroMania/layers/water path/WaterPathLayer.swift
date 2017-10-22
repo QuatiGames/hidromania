@@ -14,7 +14,7 @@ class WaterPathLayer:Layer {
     
     var holes = Array<PlantHole>()
     
-    var timeBettweenSpawns:Double = 8
+    var timeBettweenSpawns:Double = 12
     var foods = NSMutableArray()
     
     
@@ -118,7 +118,6 @@ class WaterPathLayer:Layer {
     func configurePoints(){
 
         holes.append(PlantHole(314.0, 291.000030517578))
-        
         holes.append(PlantHole(204.99, 289.5))
         holes.append(PlantHole(92.5, 292.500030517578))
         holes.append(PlantHole(91.5, 196.500015258789))
@@ -131,7 +130,12 @@ class WaterPathLayer:Layer {
     
     func createPlant(){
         
-        timeBettweenSpawns *=  0.95
+        if timeBettweenSpawns < 3{
+            timeBettweenSpawns = 3
+        }else{
+            timeBettweenSpawns *= 0.99
+            timeBettweenSpawns -= 0.2
+        }
         
         if let h = holes.random(){
             
