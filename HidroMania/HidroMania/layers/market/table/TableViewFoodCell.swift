@@ -22,6 +22,7 @@ class TableViewFoodCell: GenericCell {
     var ingredient:IngredientData?
     var enhancement:Enhancement?
     
+    @IBOutlet weak var buyButtonOutlet: UIButton!
     
     @IBAction func buyButton(_ sender: Any) {
         if ingredient != nil {
@@ -34,7 +35,13 @@ class TableViewFoodCell: GenericCell {
         }
         
         if enhancement != nil {
-            print("Buying \(enhancement!.name)")
+            if let enhancement = enhancement {
+                if (player.enhancementsBought[enhancement.type] == false){
+                    print("Buying \(enhancement.name)")
+                    player.buyEnhancement(type: enhancement.type)
+                    itemBougth()
+                }
+            }
         }
     }
     
@@ -72,6 +79,14 @@ class TableViewFoodCell: GenericCell {
         self.priceLabel.text = "$ \(enhancement.price)"
         self.nameLabel.text = enhancement.name
         self.descriptionText.text = enhancement.description
+        
+        if (player.enhancementsBought[enhancement.type] == true){
+            itemBougth()
+        }
+    }
+    
+    private func itemBougth(){
+        buyButtonOutlet.backgroundColor = UIColor.gray
     }
     
     func configureCellView(){

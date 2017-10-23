@@ -36,6 +36,10 @@ class Player {
         for ing in allIngredients {
             ingredients[ing.type] = 10
         }
+        
+        for enh in allEnhancements {
+            enhancementsBought[enh.type] = false
+        }
     }
     
     
@@ -51,13 +55,13 @@ class Player {
     
     
     let allEnhancements:Array<Enhancement> = [
-        Enhancement(n: "Abertura para o sol",t: "enh1", d: "A Abertura para o sol é muito saudável para as plantas", p: 5000),
+        Enhancement(n: "Abertura para o sol",t: "enh1", d: "A Abertura para o sol é muito saudável para as plantas", p: 200),
         Enhancement(n: "Bomba mais forte",t: "enh2", d: "Aumento da velocidade da bomba em 20%", p: 7000),
         Enhancement(n: "Descontos em nutrientes",t: "enh3", d: "Nutrientes são 20% mais baratos", p: 10000),
-        Enhancement(n: "Abertura para o sol",t: "enh4", d: "A Abertura para o sol é muito saudável para as plantas", p: 12000),
-                                              ]
+        Enhancement(n: "Abertura para o sol",t: "enh4", d: "A Abertura para o sol é muito saudável para as plantas", p: 12000)
+      ]
     
-//    var enhancementsBought = []
+    var enhancementsBought = [String:Bool]()
     
 }
 
@@ -93,6 +97,10 @@ extension Player{
         }
         
         updateObservers()
+    }
+    
+    func buyEnhancement(type:String){
+        enhancementsBought[type] = true
     }
     
     // get value of specific ingredient
