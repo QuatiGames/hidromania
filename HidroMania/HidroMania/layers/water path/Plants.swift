@@ -68,7 +68,15 @@ class Plant: SKSpriteNode{
     var foodNeeding:FoodType? //Type of the food that the plant is needing
     var levelType: LevelType //Atual plant level
     let plantType: PlantType
-    var isReadyToHarvest: Bool
+    var isReadyToHarvest: Bool {
+        didSet{
+            self.foodNeeding = .unknown
+            
+            if (readyToHarvestEffect.parent == nil){
+                self.addChild(readyToHarvestEffect)
+            }
+        }
+    }
     var isDead:Bool = false
     var harvested:Bool = false
     var readyToHarvestEffect:SKEmitterNode
@@ -230,10 +238,8 @@ class Plant: SKSpriteNode{
                 harverst += 1
                 
                 if harverst >= 3 {
-                    self.run(SKAction.repeatForever(eatAnimation!))
                     isReadyToHarvest = true
                     starveDisposer?.dispose()
-                    self.addChild(readyToHarvestEffect)
                 }
             }
         }
