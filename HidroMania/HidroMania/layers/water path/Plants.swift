@@ -62,15 +62,16 @@ class Plant: SKSpriteNode{
     let normalSize: CGSize = CGSize.init(width: 100, height: 100)
     
     var positionOnPath: Int
-    var moodType:MoodType
-    var moodSprite:SKSpriteNode
-    var balloonSprite:Balloon?
-    var foodNeeding:FoodType?
-    var levelType: LevelType
+    var moodType:MoodType //Atual mood
+    var moodSprite:SKSpriteNode //Sprite of the face
+    var balloonSprite:Balloon? //Balloon of needing sprite
+    var foodNeeding:FoodType? //Type of the food that the plant is needing
+    var levelType: LevelType //Atual plant level
     let plantType: PlantType
     var isReadyToHarvest: Bool
     var isDead:Bool = false
     var harvested:Bool = false
+    var readyToHarvestEffect:SKEmitterNode
     
     var eatAnimation:SKAction?
     
@@ -82,6 +83,7 @@ class Plant: SKSpriteNode{
         self.levelType = LevelType.baby //Starts as a baby
         self.isReadyToHarvest = false //Starts not ready to harvest
         self.moodSprite = SKSpriteNode.init() //Place holder
+        self.readyToHarvestEffect = SKEmitterNode(fileNamed: "ReadyHarvestParticle.sks")! //Adding ready to harvest effect
         
         
         let texture = SKTexture(imageNamed: "\(self.plantType)\(self.levelType.rawValue)")
@@ -100,6 +102,10 @@ class Plant: SKSpriteNode{
         
         starve = 4
         decreaseStarve()
+        
+        //Defining readyToHarvestEffect attributes
+        self.readyToHarvestEffect.position = CGPoint(x: 0, y: 0)
+        self.readyToHarvestEffect.zPosition = -1
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -223,10 +229,11 @@ class Plant: SKSpriteNode{
                 
                 harverst += 1
                 
-                if harverst == 3 {
+                if harverst >= 3 {
                     self.run(SKAction.repeatForever(eatAnimation!))
                     isReadyToHarvest = true
                     starveDisposer?.dispose()
+                    self.addChild(readyToHarvestEffect)
                 }
             }
         }

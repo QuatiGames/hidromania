@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A0338A601F9E2ED70033CA94 /* ReadyHarvestParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = A0338A5E1F9E2ED70033CA94 /* ReadyHarvestParticle.sks */; };
+		A0338A611F9E2ED70033CA94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0338A5F1F9E2ED70033CA94 /* Assets.xcassets */; };
 		A0761C9E1F96BB8600C9A25C /* Plants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0761C9D1F96BB8600C9A25C /* Plants.swift */; };
 		A0761CA01F96C6C800C9A25C /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0761C9F1F96C6C800C9A25C /* Food.swift */; };
 		A0761CA41F96E43800C9A25C /* Balloon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0761CA31F96E43800C9A25C /* Balloon.swift */; };
@@ -42,6 +44,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A0338A5E1F9E2ED70033CA94 /* ReadyHarvestParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ReadyHarvestParticle.sks; sourceTree = "<group>"; };
+		A0338A5F1F9E2ED70033CA94 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A0761C9D1F96BB8600C9A25C /* Plants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plants.swift; sourceTree = "<group>"; };
 		A0761C9F1F96C6C800C9A25C /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		A0761CA31F96E43800C9A25C /* Balloon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Balloon.swift; sourceTree = "<group>"; };
@@ -184,6 +188,8 @@
 			children = (
 				E9ECA6BC1F96AE4400E9BA93 /* WaterPathLayer.swift */,
 				A0761C9D1F96BB8600C9A25C /* Plants.swift */,
+				A0338A5E1F9E2ED70033CA94 /* ReadyHarvestParticle.sks */,
+				A0338A5F1F9E2ED70033CA94 /* Assets.xcassets */,
 				A0761C9F1F96C6C800C9A25C /* Food.swift */,
 				A0761CA31F96E43800C9A25C /* Balloon.swift */,
 				E9F854F91F9979A5004D556F /* PlantHole.swift */,
@@ -281,7 +287,9 @@
 				E902C04F1F97367600977852 /* SettingsCell.xib in Resources */,
 				E9ECA6981F96A40E00E9BA93 /* GameScene.sks in Resources */,
 				E9ECA6A31F96A40F00E9BA93 /* Assets.xcassets in Resources */,
+				A0338A611F9E2ED70033CA94 /* Assets.xcassets in Resources */,
 				E902C04B1F97365A00977852 /* FoodCell.xib in Resources */,
+				A0338A601F9E2ED70033CA94 /* ReadyHarvestParticle.sks in Resources */,
 				E9ECA6A61F96A40F00E9BA93 /* LaunchScreen.storyboard in Resources */,
 				E9ECA69A1F96A40E00E9BA93 /* Actions.sks in Resources */,
 			);
